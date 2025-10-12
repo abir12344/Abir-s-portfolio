@@ -1,0 +1,312 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BASE ===== */
+body {
+  background: #EAE8E4;
+  color: #231E1C;
+  font-family: "Spline Sans", sans-serif;
+}
+
+/* ===== HEADER ===== */
+.navbar {
+  width: 100%;
+  height: 90px;
+  padding: 0 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #231E1C;
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px; /* 70% */
+  letter-spacing: -2.25px;
+  text-transform: uppercase;
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+}
+
+.menu a {
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 15px;
+  font-weight: 300;
+  color: #231E1C;
+  text-decoration: none;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 15px;
+  font-weight: 300;
+  color: #231E1C;
+  text-decoration: none;
+  border-bottom: 1.5px solid #231E1C;
+  padding-bottom: 2px;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  width: 100vw;
+  background: #EAE8E4;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 90px 20px 120px;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.hero h1 {
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-weight: 900;
+  font-size: 104px;
+  line-height: 0.9;
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+}
+
+.hero p {
+  font-family: "Spline Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #231E1C;
+  margin: 32px auto 0;
+  max-width: 860px;
+  text-align: center;
+}
+
+/* ===== CTA BUTTON ===== */
+.btn-box {
+  display: flex;
+  height: 54px;
+  width: 270px;
+  padding: 14.5px 26.79px 15.5px 26.8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: #231E1C;
+  color: #fff;
+  cursor: pointer;
+  margin: 40px auto 0;
+  transition: background 0.3s ease;
+}
+
+.btn-box:hover {
+  background: #000;
+}
+
+.btn-text {
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 56px;
+    letter-spacing: -1.2px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .menu ul {
+    display: none;
+  }
+
+  .navbar {
+    height: 90px;
+    padding: 0 24px;
+  }
+  
+}
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  display: flex;
+  width: 1440px;
+  height: 817px;
+  padding: 120px 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  background: #10096C;
+}
+
+.about-wrapper {
+  background: #EAE8E4;
+  padding: 16px;
+ 
+}
+
+.about-card {
+  display: flex;
+  width: 1208px;
+  height: 568px;
+  padding: 101px 74px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  background: #FFFFFF;
+  border-radius: 40px;
+}
+
+/* ===== INTRO PARAGRAPH ===== */
+.about-intro {
+  font-family: "Spline Sans", sans-serif;
+  font-size: 20px;
+  max-width: 896px;
+  font-weight: 400;
+  color: #231E1C;
+  line-height: 1.5;
+  max-width: 1060px;
+}
+
+/* ===== SPECIALIZATION LABEL ===== */
+.specialization-label {
+  font-family: "Spline Sans", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #231E1C;
+}
+
+/* ===== SPECIALIZATION TITLE BLOCK ===== */
+.specialization-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+}
+
+/* Dynamic heading styles */
+.specialization-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+  align-self: stretch;
+}
+
+.specialization-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.specialization-title .title-line,
+.specialization-title .title-dynamic {
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  color: #231E1C;
+  text-transform: uppercase;
+}
+
+.title-dynamic {
+  display: grid;
+  position: relative;
+  align-items: center;
+  min-height: 1em;
+  color: #C6BAAF;
+}
+
+.dynamic-word {
+  grid-area: 1 / 1;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  color: #C6BAAF;
+  opacity: 0;
+  transform: translateY(40%);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.dynamic-word.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== EXTRA PARAGRAPH ===== */
+.about-extra {
+  display: flex;
+  max-width: 664px;
+  padding: 14px 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  align-self: stretch;
+}
+
+.about-extra p {
+  font-family: "Spline Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #231E1C;
+  max-width: 1060px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .about-section {
+    width: 100%;
+    height: auto;
+    padding: 80px 0;
+  }
+
+  .about-card {
+    width: 90%;
+    height: auto;
+    padding: 80px 40px;
+  }
+
+  .specialization-title .title-line,
+  .specialization-title .title-dynamic {
+    font-size: 40px;
+  }
+
+  .about-intro,
+  .about-extra p {
+    font-size: 18px;
+  }
+}
+}
+
+.specialization-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
