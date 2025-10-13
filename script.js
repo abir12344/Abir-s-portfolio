@@ -1,6 +1,6 @@
 const hero = document.querySelector('.hero');
-const gallery = document.querySelector('.cursor-gallery');
-const images = gallery ? Array.from(gallery.querySelectorAll('.cursor-image')) : [];
+const gallery = hero ? hero.querySelector('.hero-images') : null;
+const images = gallery ? Array.from(gallery.querySelectorAll('.hero-image')) : [];
 
 if (hero && gallery && images.length) {
   let bounds = hero.getBoundingClientRect();
@@ -16,17 +16,17 @@ if (hero && gallery && images.length) {
       ease,
     } = image.dataset;
 
-    const fallback = (value, defaultValue) =>
-      value !== undefined ? parseFloat(value) : defaultValue;
+    const parse = (value, fallback) =>
+      value !== undefined ? parseFloat(value) : fallback;
 
     return {
-      depth: fallback(depth, -300 - index * 140),
-      scale: fallback(scale, 1 - index * 0.08),
-      rotateRange: fallback(rotate, 16 - index * 2.5),
-      opacity: fallback(opacity, Math.max(0, 1 - index * 0.18)),
-      offsetX: fallback(offsetX, 0),
-      offsetY: fallback(offsetY, 0),
-      ease: fallback(ease, 0.12 + index * 0.06),
+      depth: parse(depth, -280 - index * 140),
+      scale: parse(scale, 1 - index * 0.08),
+      rotateRange: parse(rotate, 16 - index * 2.5),
+      opacity: parse(opacity, Math.max(0, 1 - index * 0.18)),
+      offsetX: parse(offsetX, 0),
+      offsetY: parse(offsetY, 0),
+      ease: parse(ease, 0.14 + index * 0.05),
     };
   });
 
@@ -36,8 +36,8 @@ if (hero && gallery && images.length) {
   }));
 
   const sizes = images.map((image) => ({
-    width: image.offsetWidth || 208,
-    height: image.offsetHeight || 208,
+    width: image.offsetWidth || 200,
+    height: image.offsetHeight || 200,
   }));
 
   const mouse = {
@@ -46,37 +46,37 @@ if (hero && gallery && images.length) {
     active: false,
   };
 
-  const handlePointerMove = (event) => {
+  const updateMouse = (event) => {
     mouse.x = event.clientX - bounds.left;
     mouse.y = event.clientY - bounds.top;
     mouse.active = true;
   };
 
-  const handlePointerLeave = () => {
+  const resetMouse = () => {
     mouse.active = false;
   };
 
-  hero.addEventListener('pointermove', handlePointerMove);
-  hero.addEventListener('pointerenter', handlePointerMove);
-  hero.addEventListener('pointerleave', handlePointerLeave);
+  hero.addEventListener('pointermove', updateMouse);
+  hero.addEventListener('pointerenter', updateMouse);
+  hero.addEventListener('pointerleave', resetMouse);
 
   window.addEventListener('resize', () => {
     bounds = hero.getBoundingClientRect();
   });
 
   const animate = () => {
-    const targetCenterX = mouse.active ? mouse.x : bounds.width / 2;
-    const targetCenterY = mouse.active ? mouse.y : bounds.height / 2;
+    const targetX = mouse.active ? mouse.x : bounds.width / 2;
+    const targetY = mouse.active ? mouse.y : bounds.height / 2;
 
     images.forEach((image, index) => {
       const layer = layers[index];
       const current = state[index];
 
-      const targetX = targetCenterX + layer.offsetX;
-      const targetY = targetCenterY + layer.offsetY;
+      const desiredX = targetX + layer.offsetX;
+      const desiredY = targetY + layer.offsetY;
 
-      current.x += (targetX - current.x) * layer.ease;
-      current.y += (targetY - current.y) * layer.ease;
+      current.x += (desiredX - current.x) * layer.ease;
+      current.y += (desiredY - current.y) * layer.ease;
 
       const relativeX = bounds.width ? (current.x - bounds.width / 2) / bounds.width : 0;
       const relativeY = bounds.height ? (current.y - bounds.height / 2) / bounds.height : 0;

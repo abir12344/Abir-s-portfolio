@@ -126,6 +126,10 @@ body {
   max-width: 960px;
 }
 
+.hero .container {
+  position: relative;
+}
+
 .hero h1 {
   font-family: "Sofia Sans Condensed", sans-serif;
   font-weight: 900;
@@ -144,6 +148,75 @@ body {
   margin: 32px auto 0;
   max-width: 860px;
   text-align: center;
+}
+
+.hero-images {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-image {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(16, 9, 108, 0.12);
+}
+
+.hero-image-1 {
+  bottom: -60px;
+  right: -20px;
+  width: 220px;
+}
+
+.hero-image-2 {
+  bottom: 60px;
+  right: 220px;
+  width: 180px;
+}
+
+.hero-image-3 {
+  bottom: -40px;
+  right: 300px;
+  width: 160px;
+}
+
+.hero-image-4 {
+  top: 90px;
+  right: -50px;
+  width: 200px;
+}
+
+.hero-image-5 {
+  top: 170px;
+  right: 160px;
+  width: 190px;
+}
+
+.hero-image-6 {
+  top: 40px;
+  right: 320px;
+  width: 150px;
+}
+
+.hero-image-7 {
+  bottom: 190px;
+  right: -70px;
+  width: 170px;
+}
+
+.hero h1,
+.hero p,
+.btn-box {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .hero-images {
+    display: none;
+  }
 }
 
 /* ===== CTA BUTTON ===== */
@@ -317,6 +390,7 @@ body {
 .specialization-block {
   display: flex;
   flex-direction: column;
+  font-weight: 700px;
   justify-content: center;
   align-items: flex-start;
   gap: 8px;
@@ -357,7 +431,7 @@ body {
   align-items: center;
   position: relative;
   min-height: 1em;
-  color: #C6BAAF;
+  color: #251303;
 }
 
 .dynamic-word {
@@ -540,6 +614,177 @@ body {
   color: #231E1C;
   text-align: center;
   line-height: 1.6;
+}
+
+.case-section {
+  display: flex;
+  justify-content: center;
+  background: #EAE8E4;
+  padding: 100px 0;
+}
+
+.case-container {
+  width: 1440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.case-section-title {
+  color: #231E1C;
+  text-align: center;
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-size: 65px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 58.5px; /* 90% */
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+  margin: 0 0 40px;
+}
+
+/* OUTER CARD */
+.outer-card {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px;
+  width: 1214px;
+  height: 608px;
+}
+
+/* INNER CARD */
+.inner-card {
+  display: flex;
+  height: 576px;
+  min-height: 576px;
+  max-height: 576px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  align-self: stretch;
+  border-radius: 40px;
+  background: #EC7100;
+}
+
+/* TEXT COLUMN */
+.text-container {
+  display: flex;
+  width: 571px;
+  padding: 62px 0 48px 60px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  gap: 32px;
+  align-self: stretch;
+}
+
+/* LABEL */
+.label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+}
+
+.label-num {
+  border: 1px solid #fff;
+  border-radius: 32px;
+  padding: 2px 10px;
+  font-family: "Sofia Sans Condensed";
+  font-style: italic;
+  font-weight: 900;
+  font-size: 20px;
+  color: #fff;
+}
+
+.label-text {
+  font-family: "Sofia Sans Condensed";
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* MAIN TITLE */
+.case-title {
+  color: #fff;
+  font-family: "Sofia Sans Condensed";
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 45.6px;
+  letter-spacing: -0.48px;
+  text-transform: uppercase;
+}
+
+/* SUPPORTING TEXT */
+.supporting-text-case {
+  color: #ffffff;
+  font-family: "Sofia Sans Condensed";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 25px; /* 125% */
+}
+
+/* IMAGE PART */
+.image-part {
+  display: flex;
+  width: 571px;
+  justify-content: center;
+  align-items: flex-end;
+  align-self: stretch;
+}
+
+.image-part img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 24px;
+}
+
+/* BUTTON */
+.btn-box-casetudy {
+  display: flex;
+  height: 54px;
+  min-width: 172px;
+  padding: 14.5px 26.79px 15.5px 26.8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #331F33;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  align-self: flex-start;
+}
+
+.btn-box-casetudy:hover {
+  background: #331F33;
+  color: #fff;
+}
+
+.btn-box-casetudy svg path {
+  transition: fill 0.3s;
+}
+
+.btn-box-casetudy:hover svg path {
+  fill: #fff;
+}
+
+.btn-box-casetudy .btn-text {
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 
