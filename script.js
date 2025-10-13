@@ -101,35 +101,68 @@ if (hero && gallery && images.length) {
 
 const titleDynamic = document.querySelector('.title-dynamic');
 
-if (titleDynamic) {
-  const dynamicWords = Array.from(titleDynamic.querySelectorAll('.dynamic-word'));
+if (titleDynamic && !titleDynamic.dataset.typewriterInit) {
+  titleDynamic.dataset.typewriterInit = 'true';
 
-  if (dynamicWords.length > 1) {
-    let activeIndex = dynamicWords.findIndex((word) => word.classList.contains('is-active'));
-    if (activeIndex < 0) {
-      activeIndex = 0;
-      dynamicWords[0].classList.add('is-active');
-    }
+  const sourceNodes = Array.from(titleDynamic.querySelectorAll('.dynamic-word'));
+  const words = sourceNodes.map((node) => node.textContent.trim()).filter(Boolean);
 
-    const transitionDuration = 300;
-    const idleDelay = 2200;
-
-    const queueNextWord = () => {
-      setTimeout(() => {
-        const currentWord = dynamicWords[activeIndex];
-        const nextIndex = (activeIndex + 1) % dynamicWords.length;
-        const nextWord = dynamicWords[nextIndex];
-
-        currentWord.classList.remove('is-active');
-
-        setTimeout(() => {
-          nextWord.classList.add('is-active');
-          activeIndex = nextIndex;
-          queueNextWord();
-        }, transitionDuration);
-      }, idleDelay);
-    };
-
-    queueNextWord();
+  if (words.length === 0) {
+    words.push('HEALTHCARE');
   }
+
+  sourceNodes.forEach((node) => node.remove());
+
+  let dynamicText = titleDynamic.querySelector('.dynamic-text');
+  if (!dynamicText) {
+    dynamicText = document.createElement('span');
+    dynamicText.className = 'dynamic-text';
+    dynamicText.setAttribute('aria-live', 'polite');
+    titleDynamic.appendChild(dynamicText);
+  }
+
+  if (!titleDynamic.querySelector('.dynamic-cursor')) {
+    const cursor = document.createElement('span');
+    cursor.className = 'dynamic-cursor';
+    cursor.textContent = '|';
+    titleDynamic.appendChild(cursor);
+  }
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  const TYPE_DELAY = 90;
+  const DELETE_DELAY = 45;
+  const WORD_COMPLETE_HOLD = 1100;
+  const WORD_SWITCH_DELAY = 300;
+
+  const typeLoop = () => {
+    const currentWord = words[wordIndex];
+
+    if (!isDeleting) {
+      if (charIndex < currentWord.length) {
+        charIndex += 1;
+        dynamicText.textContent = currentWord.slice(0, charIndex);
+        setTimeout(typeLoop, TYPE_DELAY);
+      } else {
+        setTimeout(() => {
+          isDeleting = true;
+          setTimeout(typeLoop, DELETE_DELAY);
+        }, WORD_COMPLETE_HOLD);
+      }
+    } else {
+      if (charIndex > 0) {
+        charIndex -= 1;
+        dynamicText.textContent = currentWord.slice(0, charIndex);
+        setTimeout(typeLoop, DELETE_DELAY);
+      } else {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(typeLoop, WORD_SWITCH_DELAY);
+      }
+    }
+  };
+
+  setTimeout(typeLoop, 400);
 }
