@@ -18,7 +18,7 @@ window.portfolioData = {
       label: 'Case Study',
       title: 'TELEHEALTH PLATFORM',
       description: 'Helping clinics deliver remote care with an intuitive scheduling and triage experience.<br>Designed to scale from pilot to national rollout.',
-      image: 'Mockup.png',
+      image: 'Banner.png',
       imageAlt: 'Preview of the Telehealth platform case study',
       buttonText: 'VIEW CASE STUDY',
       buttonHref: '#',
