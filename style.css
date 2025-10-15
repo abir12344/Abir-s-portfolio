@@ -228,7 +228,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  background: #231E1C;
+  background: #EC7100;
   color: #fff;
   cursor: pointer;
   margin: 40px auto 0;
@@ -237,7 +237,7 @@ body {
 }
 
 .btn-box:hover {
-  background: #121212;
+  background: #EC7100;
 }
 
 .btn-icon {
@@ -285,6 +285,21 @@ body {
   line-height: normal;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  
+}
+
+.btn-text-small{
+  color: #331F33;
+  text-align: center;
+  font-family: "Spline Sans Mono";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 112.5% */
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+  width: 140px;
+  flex-shrink: 0;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -378,12 +393,13 @@ body {
 
 /* ===== SPECIALIZATION LABEL ===== */
 .specialization-label {
-  font-family: "Spline Sans", sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.4px;
+  color: #111;
+  font-family: "Sofia Sans Condensed";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 19.2px; /* 120% */
   text-transform: uppercase;
-  color: #231E1C;
 }
 
 /* ===== SPECIALIZATION TITLE BLOCK ===== */
@@ -542,7 +558,7 @@ body {
   position: absolute;
   width: 1260px;
   height: 106px;
-  background: #000;
+  background: #EC7100;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -662,8 +678,9 @@ body {
   height: 576px;
   min-height: 576px;
   max-height: 576px;
-  justify-content: center;
-  align-items: flex-start;
+  padding: 12px;
+  justify-content: space-between;
+  align-items: center;
   gap: 40px;
   align-self: stretch;
   border-radius: 40px;
@@ -672,15 +689,14 @@ body {
 
 /* TEXT COLUMN */
 .text-container {
-  display: flex;
-  width: 571px;
-  padding: 62px 0 48px 60px;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: left;
-  gap: 32px;
-  align-self: stretch;
+ display: flex;
+ width: 571px;
+ padding: 22px 0 48px 60px;
+ flex-direction: column;
+ justify-content: center;
+ align-items: flex-start;
+ gap: 32px;
+ align-self: stretch;
 }
 
 /* LABEL */
@@ -700,6 +716,14 @@ body {
   font-weight: 900;
   font-size: 20px;
   color: #fff;
+}
+
+.text-main{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
 }
 
 .label-text {
@@ -724,20 +748,18 @@ body {
 /* SUPPORTING TEXT */
 .supporting-text-case {
   color: #ffffff;
-  font-family: "Sofia Sans Condensed";
-  font-size: 20px;
+  font-family: "Spline Sans";
+  font-size: 18px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 25px; /* 125% */
 }
 
 /* IMAGE PART */
 .image-part {
-  display: flex;
   width: 571px;
-  justify-content: center;
-  align-items: flex-end;
-  align-self: stretch;
+  height: 552px;
+  aspect-ratio: 571/552;
 }
 
 .image-part img {
@@ -750,18 +772,14 @@ body {
 /* BUTTON */
 .btn-box-casetudy {
   display: flex;
+  width: 222px;
   height: 54px;
   min-width: 172px;
-  padding: 14.5px 26.79px 15.5px 26.8px;
+  padding: 14.5px 24px 15.5px 24px;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  background: #fff;
-  color: #331F33;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease;
-  align-self: flex-start;
+  background: #FFF;
 }
 
 .btn-box-casetudy:hover {
@@ -779,17 +797,257 @@ body {
 
 .btn-box-casetudy .btn-text {
   font-family: "Spline Sans Mono", monospace;
-  font-size: 18px;
+  width: 140px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
+.testimonial{display: flex;
+  width: 1440px;
+  padding: 120px 290px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 52px;
+  background: #FFF;
 
-.specialization-row {
+}
+
+.review-container{
   display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.review-card{
+  display: flex;
+  height: 256px;
+  padding: 25px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid #EAE8E4;
+  background: #E9E8E1;
+
+
+}
+
+.main-text-review{
+  display: flex;
+  width: 410px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.stars-text{
+  display: flex;
+  width: 392.354px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.main-text-body{
+  color: #6A777D;
+  font-family: "Spline Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 125% */
+  letter-spacing: 0.16px;
+}
+
+.text-bold{
+  display: flex;
+  height: 18px;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+  color: #231E1C;
+  font-family: "Spline Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%; /* 26px */
+  letter-spacing: -1px;
+}
+
+.stars-text{display: flex;
+  display: flex;
+  width: 410px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.testimonial-supporting-text{
+  color: #6A777D;
+  font-family: "Spline Sans Mono";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 111.111% */
+  letter-spacing: -0.2px;
+  display: flex;
+  height: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+}
+
+.starts{
+  display: flex;
+padding-right: 290px;
+align-items: flex-start;
+gap: 2px;
+align-self: stretch;
+}
+
+/* ===== FAQ SECTION BASE ===== */
+.faq {
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  padding: 120px 90px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+  background: #ffffff; /* optional cream background */
+}
+
+/* ===== TWO-COLUMN LAYOUT ===== */
+.faq-section-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 104px;
+  width: 100%;
+}
+
+/* ===== LEFT SIDE (TITLE + TEXT + BUTTON) ===== */
+.title-faq-main {
+  display: flex;
+  width: 580px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.faq-title {
+  color: #231E1C;
+  font-family: "Sofia Sans Condensed";
+  font-size: 65px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 90%; /* 58.5px */
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+}
+
+.supporting-text-faq {
+  color: #231E1C;
+  font-family: "Spline Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 30px */
+}
+
+.btn-box-faq {
+  display: flex;
+  height: 54px;
+  min-width: 172px;
+  padding: 14.5px 26.8px 15.5px 26.8px;
+  justify-content: center;
   align-items: center;
   gap: 8px;
-  align-self: stretch;
+  border-radius: 8px;
+  background: #231E1C;
+  color: #FFF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-box-faq:hover {
+  background: #EC7100;
+}
+
+.btn-box-faq svg {
+  width: 24px;
+  height: 25px;
+  fill: #FFF;
+}
+
+/* ===== RIGHT SIDE (FAQ QUESTIONS) ===== */
+.faqbox-questions {
+  display: flex;
+  width: 580px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* ===== EACH FAQ ITEM ===== */
+.faq-item {
+  width: 100%;
+  background: #F8F7F4;
+  border-radius: 16px;
+  border: 1px solid #E4E2DF;
+  overflow: hidden;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item[open] {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  padding: 24px 28px;
+  user-select: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* FAQ Question Text */
+.faq-item summary span {
+  color: #331F33;
+  font-family: "Spline Sans", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+/* Arrow Rotation */
+.faq-item svg {
+  transition: transform 0.3s ease;
+}
+
+.faq-item[open] svg {
+  transform: rotate(180deg);
+}
+
+/* Expanded Paragraph */
+.faq-item p {
+  padding: 0 28px 24px;
+  margin-top: -4px;
+  font-family: "Spline Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #5A5855;
+}
