@@ -421,3 +421,60 @@ const renderFaqs = () => {
 renderCaseStudies();
 renderTestimonials();
 renderFaqs();
+
+// === ON-SCROLL SPLIT REVEAL (skip CTAs) ===
+(() => {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  const isCta = (el) => {
+    return el.closest('.btn-box, .btn-chat, .btn-box-casetudy, .btn-box-frq, .btn-box-faq, .btn-box-cta');
+  };
+
+  const isInsideReviewCard = (el) => el.closest('.review-card');
+
+  const splitElement = (el) => {
+    if (el.dataset.splitInit) return;
+    el.dataset.splitInit = 'true';
+
+    const hasContent = el.textContent.trim().length > 0;
+    if (!hasContent) return;
+
+    const originalNodes = Array.from(el.childNodes);
+    el.textContent = '';
+
+    const lineContainer = document.createElement('span');
+    lineContainer.className = 'split-line';
+
+    const textWrapper = document.createElement('span');
+    textWrapper.className = 'split-text';
+
+    originalNodes.forEach((node) => {
+      textWrapper.appendChild(node);
+    });
+
+    lineContainer.appendChild(textWrapper);
+    el.appendChild(lineContainer);
+  };
+
+  const targets = Array.from(document.querySelectorAll('[data-split], h1, h2, h3, h4, p, .case-title, .supporting-text-case, .faq-title, .supporting-text-faq, .grid-title, .grid-content span, .label-text, .case-section-title'))
+    .filter((el) => !isCta(el) && !isInsideReviewCard(el));
+
+  // Avoid re-splitting items already using manual split markup in hero heading
+  targets.forEach((el) => {
+    if (el.querySelector('.split-line, .split-text')) return;
+    splitElement(el);
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.classList.add('reveal-active');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  targets.forEach((el) => io.observe(el));
+})();

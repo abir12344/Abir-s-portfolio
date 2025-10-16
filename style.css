@@ -28,9 +28,62 @@ body {
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
-  line-height: 21px; /* 70% */
+  line-height: 1;
   letter-spacing: -2.25px;
   text-transform: uppercase;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.logo-line,
+.split-line {
+  display: block;
+  overflow: hidden;
+}
+
+.logo-text,
+.split-text {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+
+/* Run reveal on scroll when ancestor gets .reveal-active; logo animates always */
+.reveal-active .split-text,
+.logo-text {
+  animation: text-reveal 0.9s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.logo-line:nth-child(1) .logo-text {
+  animation-delay: 0.15s;
+}
+
+.logo-line:nth-child(2) .logo-text {
+  animation-delay: 0.25s;
+}
+
+@keyframes text-reveal {
+  0% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-text,
+  .split-text {
+    animation: none;
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .menu ul {
@@ -128,6 +181,7 @@ body {
 
 .hero .container {
   position: relative;
+  max-width: 100%;
 }
 
 .hero h1 {
@@ -139,6 +193,34 @@ body {
   text-transform: uppercase;
 }
 
+.hero-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.hero-heading .split-line {
+  width: 100%;
+}
+
+.hero-heading .split-text {
+  width: 100%;
+  text-align: center;
+}
+
+.hero-heading .split-line:nth-child(1) .split-text {
+  animation-delay: 0.35s;
+}
+
+.hero-heading .split-line:nth-child(2) .split-text {
+  animation-delay: 0.45s;
+}
+
+.hero-heading .split-line:nth-child(3) .split-text {
+  animation-delay: 0.55s;
+}
+
 .hero p {
   font-family: "Spline Sans", sans-serif;
   font-size: 24px;
@@ -148,6 +230,33 @@ body {
   margin: 32px auto 0;
   max-width: 860px;
   text-align: center;
+}
+
+.hero p .split-text {
+  animation-delay: 0.65s;
+}
+
+.hero-subtitle {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.hero-subtitle .split-line {
+  width: 100%;
+}
+
+.hero-subtitle .split-text {
+  width: 100%;
+}
+
+.hero-subtitle .split-line:nth-child(1) .split-text {
+  animation-delay: 0.65s;
+}
+
+.hero-subtitle .split-line:nth-child(2) .split-text {
+  animation-delay: 0.75s;
 }
 
 .hero-images {
