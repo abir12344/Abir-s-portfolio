@@ -100,39 +100,77 @@ if (titleDynamic && !titleDynamic.dataset.typewriterInit) {
     titleDynamic.appendChild(dynamicText);
   }
 
-  if (!titleDynamic.querySelector('.dynamic-cursor')) {
-    const cursor = document.createElement('span');
-    cursor.className = 'dynamic-cursor';
-    cursor.textContent = '|';
-    titleDynamic.appendChild(cursor);
+  const existingCursor = titleDynamic.querySelector('.dynamic-cursor');
+  if (existingCursor) existingCursor.remove();
+
+  const measureNode = dynamicText.cloneNode(false);
+  measureNode.style.position = 'absolute';
+  measureNode.style.visibility = 'hidden';
+  measureNode.style.pointerEvents = 'none';
+  measureNode.style.animation = 'none';
+  measureNode.style.transform = 'none';
+  measureNode.style.opacity = '1';
+  measureNode.style.whiteSpace = 'nowrap';
+  titleDynamic.appendChild(measureNode);
+
+  let maxWidth = 0;
+  words.forEach((word) => {
+    measureNode.textContent = word;
+    maxWidth = Math.max(maxWidth, measureNode.offsetWidth);
+  });
+  measureNode.remove();
+  if (maxWidth > 0) {
+    titleDynamic.style.minWidth = `${Math.ceil(maxWidth)}px`;
   }
 
-  let wordIndex = 0, charIndex = 0, isDeleting = false;
-  const TYPE_DELAY = 90, DELETE_DELAY = 45, WORD_HOLD = 1100, SWITCH_DELAY = 300;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let wordIndex = 0;
+  const HOLD_DURATION = 1800;
+  const INITIAL_DELAY = 450;
 
-  const typeLoop = () => {
+  dynamicText.textContent = words[wordIndex];
+  dynamicText.classList.remove('is-visible');
+
+  const showWord = () => {
     const currentWord = words[wordIndex];
-    if (!isDeleting) {
-      if (charIndex < currentWord.length) {
-        charIndex++;
-        dynamicText.textContent = currentWord.slice(0, charIndex);
-        setTimeout(typeLoop, TYPE_DELAY);
-      } else {
-        setTimeout(() => { isDeleting = true; setTimeout(typeLoop, DELETE_DELAY); }, WORD_HOLD);
-      }
-    } else {
-      if (charIndex > 0) {
-        charIndex--;
-        dynamicText.textContent = currentWord.slice(0, charIndex);
-        setTimeout(typeLoop, DELETE_DELAY);
-      } else {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        setTimeout(typeLoop, SWITCH_DELAY);
-      }
+    dynamicText.classList.remove('is-visible');
+    dynamicText.style.animation = 'none';
+    dynamicText.style.transform = '';
+    dynamicText.style.opacity = '';
+    dynamicText.textContent = currentWord;
+
+    if (prefersReducedMotion) {
+      dynamicText.style.transform = 'translateY(0)';
+      dynamicText.style.opacity = '1';
+      return;
     }
+
+    // Force reflow so animation restarts consistently
+    void dynamicText.offsetWidth;
+    dynamicText.style.animation = '';
+    dynamicText.classList.add('is-visible');
   };
-  setTimeout(typeLoop, 400);
+
+  const scheduleNext = () => {
+    if (words.length <= 1) return;
+    setTimeout(() => {
+      wordIndex = (wordIndex + 1) % words.length;
+      showWord();
+      scheduleNext();
+    }, HOLD_DURATION);
+  };
+
+  if (prefersReducedMotion) {
+    dynamicText.style.animation = 'none';
+    dynamicText.style.transform = 'translateY(0)';
+    dynamicText.style.opacity = '1';
+    scheduleNext();
+  } else {
+    setTimeout(() => {
+      showWord();
+      scheduleNext();
+    }, INITIAL_DELAY);
+  }
 }
 
 // === CASE STUDIES ===

@@ -642,6 +642,7 @@ body {
   position: relative;
   min-height: 1em;
   color: #EC7100;
+  overflow: hidden;
 }
 
 .dynamic-word {
@@ -651,6 +652,13 @@ body {
 .dynamic-text {
   display: inline-block;
   color: inherit;
+  transform: translateY(110%);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.dynamic-text.is-visible {
+  animation: text-reveal 0.9s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 .dynamic-cursor {
