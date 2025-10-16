@@ -516,3 +516,29 @@ renderFaqs();
 
   targets.forEach((el) => io.observe(el));
 })();
+
+// === NAV LETTER HOVER ===
+(() => {
+  const wrappers = document.querySelectorAll('.menu-link-text');
+  wrappers.forEach((wrapper) => {
+    const lines = Array.from(wrapper.querySelectorAll('.menu-link-text__line'));
+    lines.forEach((line) => {
+      if (line.dataset.lettersInit) return;
+      const text = line.textContent;
+      line.textContent = '';
+      Array.from(text).forEach((char, index) => {
+        const letter = document.createElement('span');
+        letter.className = 'menu-letter';
+        if (line.classList.contains('menu-link-text__line--top')) {
+          letter.classList.add('menu-letter--top');
+        } else {
+          letter.classList.add('menu-letter--bottom');
+        }
+        letter.textContent = char === ' ' ? '\u00A0' : char;
+        letter.style.setProperty('--delay', `${index * 45}ms`);
+        line.appendChild(letter);
+      });
+      line.dataset.lettersInit = 'true';
+    });
+  });
+})();
