@@ -165,16 +165,12 @@ body {
 .menu-letter {
   display: inline-block;
   transform: translateY(0);
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 0s);
 }
 
 .menu-letter--bottom {
   transform: translateY(100%);
-}
-
-.menu-link:hover .menu-letter,
-.menu-link:focus-visible .menu-letter {
-  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--delay, 0s);
 }
 
 .menu-link:hover .menu-letter--top,
