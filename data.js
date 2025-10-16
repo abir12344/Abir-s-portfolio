@@ -65,6 +65,16 @@ window.portfolioData = {
       body: 'We went from scattered ideas to a polished product vision. The strategy, research, and UI execution landed us our next round of funding.',
       rating: 5,
     },
+
+    {
+      id: 'liam-chan',
+      author: 'Liam Chan',
+      role: 'Founder, PulseTrack',
+      date: '2024-08-21T08:45:00Z',
+      headline: 'Intuitive End-To-End Experience',
+      body: 'We went from scattered ideas to a polished product vision. The strategy, research, and UI execution landed us our next round of funding.',
+      rating: 5,
+    },
   ],
   faqs: [
     {

@@ -1,3 +1,4 @@
+// === HERO SECTION ===
 const hero = document.querySelector('.hero');
 const gallery = hero ? hero.querySelector('.hero-images') : null;
 const images = gallery ? Array.from(gallery.querySelectorAll('.hero-image')) : [];
@@ -6,16 +7,7 @@ if (hero && gallery && images.length) {
   let bounds = hero.getBoundingClientRect();
 
   const layers = images.map((image, index) => {
-    const {
-      depth,
-      scale,
-      rotate,
-      opacity,
-      offsetX,
-      offsetY,
-      ease,
-    } = image.dataset;
-
+    const { depth, scale, rotate, opacity, offsetX, offsetY, ease } = image.dataset;
     const parse = (value, fallback) =>
       value !== undefined ? parseFloat(value) : fallback;
 
@@ -40,21 +32,14 @@ if (hero && gallery && images.length) {
     height: image.offsetHeight || 200,
   }));
 
-  const mouse = {
-    x: bounds.width / 2,
-    y: bounds.height / 2,
-    active: false,
-  };
+  const mouse = { x: bounds.width / 2, y: bounds.height / 2, active: false };
 
   const updateMouse = (event) => {
     mouse.x = event.clientX - bounds.left;
     mouse.y = event.clientY - bounds.top;
     mouse.active = true;
   };
-
-  const resetMouse = () => {
-    mouse.active = false;
-  };
+  const resetMouse = () => (mouse.active = false);
 
   hero.addEventListener('pointermove', updateMouse);
   hero.addEventListener('pointerenter', updateMouse);
@@ -95,22 +80,16 @@ if (hero && gallery && images.length) {
 
     requestAnimationFrame(animate);
   };
-
   animate();
 }
 
+// === TITLE DYNAMIC ===
 const titleDynamic = document.querySelector('.title-dynamic');
-
 if (titleDynamic && !titleDynamic.dataset.typewriterInit) {
   titleDynamic.dataset.typewriterInit = 'true';
-
   const sourceNodes = Array.from(titleDynamic.querySelectorAll('.dynamic-word'));
   const words = sourceNodes.map((node) => node.textContent.trim()).filter(Boolean);
-
-  if (words.length === 0) {
-    words.push('HEALTHCARE');
-  }
-
+  if (words.length === 0) words.push('HEALTHCARE');
   sourceNodes.forEach((node) => node.remove());
 
   let dynamicText = titleDynamic.querySelector('.dynamic-text');
@@ -128,141 +107,94 @@ if (titleDynamic && !titleDynamic.dataset.typewriterInit) {
     titleDynamic.appendChild(cursor);
   }
 
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-
-  const TYPE_DELAY = 90;
-  const DELETE_DELAY = 45;
-  const WORD_COMPLETE_HOLD = 1100;
-  const WORD_SWITCH_DELAY = 300;
+  let wordIndex = 0, charIndex = 0, isDeleting = false;
+  const TYPE_DELAY = 90, DELETE_DELAY = 45, WORD_HOLD = 1100, SWITCH_DELAY = 300;
 
   const typeLoop = () => {
     const currentWord = words[wordIndex];
-
     if (!isDeleting) {
       if (charIndex < currentWord.length) {
-        charIndex += 1;
+        charIndex++;
         dynamicText.textContent = currentWord.slice(0, charIndex);
         setTimeout(typeLoop, TYPE_DELAY);
       } else {
-        setTimeout(() => {
-          isDeleting = true;
-          setTimeout(typeLoop, DELETE_DELAY);
-        }, WORD_COMPLETE_HOLD);
+        setTimeout(() => { isDeleting = true; setTimeout(typeLoop, DELETE_DELAY); }, WORD_HOLD);
       }
     } else {
       if (charIndex > 0) {
-        charIndex -= 1;
+        charIndex--;
         dynamicText.textContent = currentWord.slice(0, charIndex);
         setTimeout(typeLoop, DELETE_DELAY);
       } else {
         isDeleting = false;
         wordIndex = (wordIndex + 1) % words.length;
-        setTimeout(typeLoop, WORD_SWITCH_DELAY);
+        setTimeout(typeLoop, SWITCH_DELAY);
       }
     }
   };
-
   setTimeout(typeLoop, 400);
 }
 
+// === CASE STUDIES ===
 const portfolioData = window.portfolioData || {};
-
 const STAR_PATH = 'M11.8356 0L12.9787 7.62872H21L13.6852 12.3435L14.8284 19.9722L9.1644 15.2574L1.84965 19.9722L5.66394 12.3435L0 7.62872H8.0213L11.8356 0Z';
 const FAQ_CHEVRON_PATH = 'M15.9922 17.5618L21.7161 11.8379L23.6018 13.7235L15.9922 21.333L8.38281 13.7235L10.2684 11.8379L15.9922 17.5618Z';
 
-const createSvg = ({ width, height, viewBox, pathD, fill = '#331F33', stroke, strokeWidth }) => {
+const createSvg = ({ width, height, viewBox, pathD, fill = '#331F33' }) => {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svg.setAttribute('width', String(width));
-  svg.setAttribute('height', String(height));
+  svg.setAttribute('width', width);
+  svg.setAttribute('height', height);
   svg.setAttribute('viewBox', viewBox);
-  svg.setAttribute('fill', 'none');
-
-  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  path.setAttribute('d', pathD);
-  path.setAttribute('fill', fill);
-
-  if (stroke) {
-    path.setAttribute('stroke', stroke);
-  }
-
-  if (strokeWidth) {
-    path.setAttribute('stroke-width', strokeWidth);
-  }
-
-  svg.appendChild(path);
+  svg.innerHTML = `<path d="${pathD}" fill="${fill}"/>`;
   return svg;
 };
 
 const renderCaseStudies = () => {
   const container = document.querySelector('[data-case-studies]');
   const items = Array.isArray(portfolioData.caseStudies) ? portfolioData.caseStudies : [];
-
   if (!container) return;
-
   container.innerHTML = '';
 
   items.forEach((item, index) => {
     const outerCard = document.createElement('div');
     outerCard.className = 'outer-card';
-
     const innerCard = document.createElement('div');
     innerCard.className = 'inner-card';
-
-    if (item.theme && item.theme !== 'default') {
-      innerCard.classList.add(`inner-card--${item.theme}`);
-    }
+    if (item.theme && item.theme !== 'default') innerCard.classList.add(`inner-card--${item.theme}`);
 
     const textContainer = document.createElement('div');
     textContainer.className = 'text-container';
-
     const label = document.createElement('div');
     label.className = 'label';
-
     const labelNum = document.createElement('span');
     labelNum.className = 'label-num';
     labelNum.textContent = item.number || String(index + 1).padStart(2, '0');
-
     const labelText = document.createElement('span');
     labelText.className = 'label-text';
     labelText.textContent = item.label || 'Case Study';
-
     label.append(labelNum, labelText);
 
     const textMain = document.createElement('div');
     textMain.className = 'text-main';
-
     const title = document.createElement('h3');
     title.className = 'case-title';
     title.textContent = item.title || '';
-
     const supporting = document.createElement('p');
     supporting.className = 'supporting-text-case';
-    if (item.description) {
-      supporting.innerHTML = item.description;
-    }
-
+    if (item.description) supporting.innerHTML = item.description;
     textMain.append(title, supporting);
 
-    const button = document.createElement(item.buttonHref ? 'a' : 'div');
+    const button = document.createElement('a');
     button.className = 'btn-box-casetudy';
-    if (item.buttonHref) {
-      button.href = item.buttonHref;
-    }
-
+    button.href = item.buttonHref || '#';
     const buttonText = document.createElement('span');
-    buttonText.className = item.buttonTextClass || 'btn-text-small';
+    buttonText.className = 'btn-text-small';
     buttonText.textContent = item.buttonText || 'VIEW CASE STUDY';
-    buttonText.dataset.text = buttonText.textContent;
-
     button.append(buttonText);
 
     textContainer.append(label, textMain, button);
-
     const imagePart = document.createElement('div');
     imagePart.className = 'image-part';
-
     const image = document.createElement('img');
     image.src = item.image || '';
     image.alt = item.imageAlt || item.title || 'Case study preview';
@@ -273,6 +205,10 @@ const renderCaseStudies = () => {
     container.appendChild(outerCard);
   });
 };
+
+// === TESTIMONIALS (Smooth Infinite Scroll) ===
+let testimonialsScrollState = null;
+let testimonialsResizeHandler = null;
 
 const formatReviewMeta = (review) => {
   const author = review.author || 'Anonymous';
@@ -297,22 +233,33 @@ const formatReviewMeta = (review) => {
   return `${author}${role} • ${datePart} ${timePart}`;
 };
 
-const createStar = (filled) =>
-  createSvg({
-    width: 21,
-    height: 20,
-    viewBox: '0 0 21 20',
-    pathD: STAR_PATH,
-    fill: filled ? '#F29161' : '#E1D9D2',
-  });
-
 const renderTestimonials = () => {
   const container = document.querySelector('[data-testimonials]');
   const items = Array.isArray(portfolioData.testimonials) ? portfolioData.testimonials : [];
 
   if (!container) return;
 
+  if (testimonialsResizeHandler) {
+    window.removeEventListener('resize', testimonialsResizeHandler);
+    testimonialsResizeHandler = null;
+  }
+
+  if (testimonialsScrollState?.rafId) {
+    cancelAnimationFrame(testimonialsScrollState.rafId);
+  }
+  testimonialsScrollState = null;
+
   container.innerHTML = '';
+
+  if (!items.length) {
+    return;
+  }
+
+  const track = document.createElement('div');
+  track.className = 'review-track';
+  container.appendChild(track);
+
+  const cards = [];
 
   items.forEach((item) => {
     const card = document.createElement('div');
@@ -322,11 +269,18 @@ const renderTestimonials = () => {
     starsText.className = 'stars-text';
 
     const starsRow = document.createElement('div');
-    starsRow.className = 'stars';
+    starsRow.className = 'starts';
 
     const rating = typeof item.rating === 'number' ? Math.max(0, Math.min(5, Math.round(item.rating))) : 0;
     for (let i = 0; i < 5; i += 1) {
-      starsRow.appendChild(createStar(i < rating));
+      const star = createSvg({
+        width: 21,
+        height: 20,
+        viewBox: '0 0 21 20',
+        pathD: STAR_PATH,
+        fill: i < rating ? '#F29161' : '#E1D9D2',
+      });
+      starsRow.appendChild(star);
     }
 
     const meta = document.createElement('p');
@@ -347,12 +301,91 @@ const renderTestimonials = () => {
     body.textContent = item.body || '';
 
     mainText.append(headline, body);
-
     card.append(starsText, mainText);
-    container.appendChild(card);
+    track.appendChild(card);
+    cards.push(card);
+  });
+
+  if (!cards.length) {
+    return;
+  }
+
+  const originalWidth = track.scrollWidth;
+
+  if (cards.length > 1 && originalWidth > 0) {
+    const fragment = document.createDocumentFragment();
+    cards.forEach((card) => {
+      const clone = card.cloneNode(true);
+      fragment.appendChild(clone);
+    });
+    track.appendChild(fragment);
+  }
+
+  const state = {
+    track,
+    baseWidth: originalWidth,
+    position: 0,
+    rafId: null,
+    lastTime: null,
+    speed: 140,
+    animating: false,
+    cardCount: cards.length,
+  };
+
+  testimonialsScrollState = state;
+
+  const step = (timestamp) => {
+    if (!state.animating) return;
+    if (state.lastTime === null) {
+      state.lastTime = timestamp;
+    }
+    const deltaSeconds = (timestamp - state.lastTime) / 1000;
+    state.lastTime = timestamp;
+    state.position += state.speed * deltaSeconds;
+    if (state.baseWidth > 0) {
+      state.position %= state.baseWidth;
+    } else {
+      state.position = 0;
+    }
+    state.track.style.transform = `translateX(-${state.position}px)`;
+    state.rafId = requestAnimationFrame(step);
+  };
+
+  const startScroll = () => {
+    if (state.animating) return;
+    if (state.cardCount <= 1 || state.baseWidth <= 0) return;
+    state.animating = true;
+    state.lastTime = null;
+    state.rafId = requestAnimationFrame(step);
+  };
+
+  const stopScroll = () => {
+    if (!state.animating) return;
+    state.animating = false;
+    if (state.rafId) {
+      cancelAnimationFrame(state.rafId);
+      state.rafId = null;
+    }
+    state.lastTime = null;
+  };
+
+  container.addEventListener('pointerenter', stopScroll);
+  container.addEventListener('pointerleave', startScroll);
+
+  testimonialsResizeHandler = () => {
+    stopScroll();
+    renderTestimonials();
+  };
+
+  window.addEventListener('resize', testimonialsResizeHandler, { passive: true });
+
+  requestAnimationFrame(() => {
+    state.track.style.transform = 'translateX(0)';
+    startScroll();
   });
 };
 
+// === FAQ ===
 const createChevronIcon = () =>
   createSvg({
     width: 32,
@@ -365,53 +398,26 @@ const createChevronIcon = () =>
 const renderFaqs = () => {
   const container = document.querySelector('[data-faqs]');
   const items = Array.isArray(portfolioData.faqs) ? portfolioData.faqs : [];
-
   if (!container) return;
-
   container.innerHTML = '';
-
-  let hasOpened = false;
 
   items.forEach((item) => {
     const details = document.createElement('details');
     details.className = 'faq-item';
-    if (item.open && !hasOpened) {
-      details.setAttribute('open', '');
-      hasOpened = true;
-    }
 
     const summary = document.createElement('summary');
-
     const question = document.createElement('span');
     question.textContent = item.question || '';
-
     summary.append(question, createChevronIcon());
 
     const answer = document.createElement('p');
     answer.textContent = item.answer || '';
-
-    details.addEventListener('toggle', () => {
-      if (!details.open) return;
-
-      container.querySelectorAll('.faq-item').forEach((other) => {
-        if (other !== details && other.open) {
-          other.removeAttribute('open');
-        }
-      });
-    });
-
     details.append(summary, answer);
     container.appendChild(details);
   });
-
-  if (!hasOpened) {
-    const firstItem = container.querySelector('.faq-item');
-    if (firstItem) {
-      firstItem.setAttribute('open', '');
-    }
-  }
 };
 
+// === INIT ===
 renderCaseStudies();
 renderTestimonials();
 renderFaqs();
