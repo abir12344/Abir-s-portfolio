@@ -35,16 +35,13 @@ body {
 
 .logo {
   color: #231E1C;
-  font-family: "Sofia Sans Condensed", sans-serif;
+  font-family: "Sofia Sans Condensed";
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
-  line-height: 1;
+  line-height: 21px; /* 70% */
   letter-spacing: -2.25px;
   text-transform: uppercase;
-  display: inline-flex;
-  flex-direction: column;
-  gap: 2px;
 }
 
 .logo-line,
@@ -235,6 +232,7 @@ body {
 .hero .container {
   position: relative;
   max-width: 100%;
+  padding: 12px;
 }
 
 .hero h1 {
@@ -275,14 +273,16 @@ body {
 }
 
 .hero p {
-  font-family: "Spline Sans", sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.6;
   color: #231E1C;
-  margin: 32px auto 0;
-  max-width: 860px;
   text-align: center;
+  font-family: "Spline Sans";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 166.667% */
+  letter-spacing: -0.32px;
+  gap: 20px;
+  
 }
 
 .hero p .split-text {
@@ -788,24 +788,26 @@ body {
 }
 
 .expertise-inner {
-  width: 858px;
+  width: 1260px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
   position: relative;
   text-align: center;
+  border-top: 2px solid #000;
 }
 
 /* Each Row (Text + Hover Bar) */
 .expertise-row {
   position: relative;
+  width: 1260px;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 106px; /* bar height */
   overflow: visible;
-  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  border-bottom: 2px solid #000;
 }
 
 /* Blue Hover Bar */
@@ -855,7 +857,7 @@ body {
   position: absolute;
   width: 200px;
   height: 305px;
-  right: -210px;
+  right: 0px;
   top: -153px;
   opacity: 0;
   visibility: hidden;
@@ -1334,17 +1336,18 @@ align-self: stretch;
 .faqbox-questions {
   display: flex;
   width: 580px;
+  border-top: 2px solid #111111;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  
 }
 
 /* ===== EACH FAQ ITEM ===== */
 .faq-item {
   width: 100%;
-  background: #F8F7F4;
+  background: #00000000;
   border-radius: 0;
-  border: 1px solid #E4E2DF;
+  border-bottom: 2px solid #000000;
   overflow: hidden;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
@@ -1764,4 +1767,39 @@ text-transform: uppercase;
   .hero-actions .btn-chat {
     width: 100%;
   }
+}
+
+@media (max-width: 500px) {
+
+  .hero p {
+    color: #231E1C;
+    text-align: center;
+    font-family: "Spline Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 166.667% */
+    letter-spacing: -0.32px;
+    gap: 20px;
+    
+  }
+  
+  .hero h1 {
+    font-family: "Sofia Sans Condensed", sans-serif;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 0.9;
+    letter-spacing: -1.4px;
+    text-transform: uppercase;
+  }
+  
+  .hero {
+    width: 100vw;
+    background: #EAE8E4;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px 16px;
+  }
+  
 }
