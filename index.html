@@ -11,50 +11,59 @@
 
   <!-- ===== HEADER ===== -->
   <header class="navbar">
-    <div class="logo">ABIR<br>HOSSAIN</div>
+    <div class="logo" data-reveal-on-load>
+      <span class="logo-line"><span class="logo-text">ABIR</span></span>
+      <span class="logo-line"><span class="logo-text">HOSSAIN</span></span>
+    </div>
 
-    <nav class="menu">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Toggle navigation" data-reveal-on-load>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav id="site-menu" class="menu" data-reveal-on-load>
       <ul>
         <li>
-          <a href="#" class="menu-link">
+          <a href="#about" class="menu-link">
             <span class="bracket-left">[</span>
             <span class="menu-link-text">
               <span class="sr-only">ABOUT ME</span>
-              <span class="menu-link-text__line menu-link-text__line--top" aria-hidden="true">ABOUT ME</span>
-              <span class="menu-link-text__line menu-link-text__line--bottom" aria-hidden="true">ABOUT ME</span>
+              <span class="menu-link-layer menu-link-layer--original" aria-hidden="true">ABOUT ME</span>
+              <span class="menu-link-layer menu-link-layer--clone" aria-hidden="true">ABOUT ME</span>
             </span>
             <span class="bracket-right">]</span>
           </a>
         </li>
         <li>
-          <a href="#" class="menu-link">
+          <a href="#works" class="menu-link">
             <span class="bracket-left">[</span>
             <span class="menu-link-text">
               <span class="sr-only">WORKS</span>
-              <span class="menu-link-text__line menu-link-text__line--top" aria-hidden="true">WORKS</span>
-              <span class="menu-link-text__line menu-link-text__line--bottom" aria-hidden="true">WORKS</span>
+              <span class="menu-link-layer menu-link-layer--original" aria-hidden="true">WORKS</span>
+              <span class="menu-link-layer menu-link-layer--clone" aria-hidden="true">WORKS</span>
             </span>
             <span class="bracket-right">]</span>
           </a>
         </li>
         <li>
-          <a href="#" class="menu-link">
+          <a href="#services" class="menu-link">
             <span class="bracket-left">[</span>
             <span class="menu-link-text">
               <span class="sr-only">SERVICES</span>
-              <span class="menu-link-text__line menu-link-text__line--top" aria-hidden="true">SERVICES</span>
-              <span class="menu-link-text__line menu-link-text__line--bottom" aria-hidden="true">SERVICES</span>
+              <span class="menu-link-layer menu-link-layer--original" aria-hidden="true">SERVICES</span>
+              <span class="menu-link-layer menu-link-layer--clone" aria-hidden="true">SERVICES</span>
             </span>
             <span class="bracket-right">]</span>
           </a>
         </li>
         <li>
-          <a href="#" class="menu-link">
+          <a href="#contact" class="menu-link">
             <span class="bracket-left">[</span>
             <span class="menu-link-text">
               <span class="sr-only">CONNECT</span>
-              <span class="menu-link-text__line menu-link-text__line--top" aria-hidden="true">CONNECT</span>
-              <span class="menu-link-text__line menu-link-text__line--bottom" aria-hidden="true">CONNECT</span>
+              <span class="menu-link-layer menu-link-layer--original" aria-hidden="true">CONNECT</span>
+              <span class="menu-link-layer menu-link-layer--clone" aria-hidden="true">CONNECT</span>
             </span>
             <span class="bracket-right">]</span>
           </a>
@@ -62,7 +71,7 @@
       </ul>
     </nav>
 
-    <a href="#" class="contact">
+    <a href="#contact" class="contact" data-reveal-on-load>
       CONTACT ME
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
         <path d="M1.16406 12.6663L12.4959 1.29899M3.70573 1.17686L12.6302 1.16406L12.6584 10.0885" stroke="#231E1C" stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round"/>
@@ -79,7 +88,7 @@
         <span class="split-line"><span class="split-text">HEALTHCARE &amp; BEYOND</span></span>
       </h1>
       <p>
-        I’m Abir Hossain, a UX-focused Product Designer crafting intuitive <br> digital solutions 
+        I’m Abir Hossain, a UX-focused Product<span class="hero-break hero-break--mobile"></span> Designer crafting intuitive<span class="hero-break"></span> digital solutions 
         that improve lives, with a strong focus on healthcare technology.
       </p>
 
@@ -118,7 +127,7 @@
   </section>
 
   <!-- ===== ABOUT / SPECIALIZATION SECTION ===== -->
-  <section class="about-section">
+  <section id="about" class="about-section">
     <div class="about-wrapper">
       <div class="about-card">
         
@@ -160,7 +169,7 @@
   </section>
 
   <!-- ====CASE STUDIES=== -->
-  <section class="case-section">
+  <section id="works" class="case-section">
     <div class="case-container">
       <h2 class="case-section-title">Case Studies</h2>
 
@@ -181,7 +190,7 @@
   </section>
 
   <!-- ===== EXPERTISE SECTION ===== -->
-  <section class="expertise">
+  <section id="services" class="expertise">
   <div class="expertise-inner">
 
     <div class="expertise-row">
@@ -260,7 +269,7 @@
 </section>
 
 <!-- ====Final CTA====  -->
-<section class="cta">
+<section id="contact" class="cta">
   <div class="cta-section-main">
 
     <!-- LEFT COLUMN: TITLE + CTA -->

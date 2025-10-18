@@ -460,6 +460,80 @@ renderCaseStudies();
 renderTestimonials();
 renderFaqs();
 
+// === INITIAL LOAD REVEALS ===
+(() => {
+  const nodes = Array.from(document.querySelectorAll('[data-reveal-on-load]'));
+  if (!nodes.length) return;
+
+  const buttonSelectors = '.btn-box, .btn-chat, .btn-box-casetudy, .btn-box-frq, .btn-box-faq, .btn-box-cta, .book-btn';
+  nodes.forEach((node) => {
+    if (node.matches(buttonSelectors)) {
+      node.classList.add('motion-button');
+    }
+  });
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    nodes.forEach((node) => node.classList.add('reveal-active'));
+    return;
+  }
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      nodes.forEach((node, index) => {
+        const existingDelay = node.style.getPropertyValue('--motion-delay');
+        if (!existingDelay) {
+          const delayValue = node.dataset.revealDelay || `${index * 120}ms`;
+          node.style.setProperty('--motion-delay', delayValue);
+        }
+        node.classList.add('reveal-active');
+      });
+    });
+  });
+})();
+
+// === MOBILE NAV ===
+(() => {
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('site-menu');
+  if (!toggle || !menu) return;
+
+  const links = Array.from(menu.querySelectorAll('a'));
+  const body = document.body;
+
+  const setState = (open) => {
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    body.classList.toggle('menu-open', open);
+  };
+
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    setState(!isOpen);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setState(false));
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!menu.contains(event.target) && event.target !== toggle && !toggle.contains(event.target)) {
+      setState(false);
+    }
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setState(false);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 500) {
+      setState(false);
+    }
+  });
+})();
+
 // === ON-SCROLL SPLIT REVEAL (skip CTAs) ===
 (() => {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -521,24 +595,19 @@ renderFaqs();
 (() => {
   const wrappers = document.querySelectorAll('.menu-link-text');
   wrappers.forEach((wrapper) => {
-    const lines = Array.from(wrapper.querySelectorAll('.menu-link-text__line'));
-    lines.forEach((line) => {
-      if (line.dataset.lettersInit) return;
-      const text = line.textContent;
-      line.textContent = '';
+    const layers = Array.from(wrapper.querySelectorAll('.menu-link-layer'));
+    layers.forEach((layer) => {
+      if (layer.dataset.lettersInit) return;
+      const text = layer.textContent;
+      layer.textContent = '';
       Array.from(text).forEach((char, index) => {
-        const letter = document.createElement('span');
-        letter.className = 'menu-letter';
-        if (line.classList.contains('menu-link-text__line--top')) {
-          letter.classList.add('menu-letter--top');
-        } else {
-          letter.classList.add('menu-letter--bottom');
-        }
-        letter.textContent = char === ' ' ? '\u00A0' : char;
-        letter.style.setProperty('--delay', `${index * 45}ms`);
-        line.appendChild(letter);
+        const span = document.createElement('span');
+        span.className = 'menu-link-char';
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.style.setProperty('--char-delay', `${index * 45}ms`);
+        layer.appendChild(span);
       });
-      line.dataset.lettersInit = 'true';
+      layer.dataset.lettersInit = 'true';
     });
   });
 })();
