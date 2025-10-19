@@ -534,6 +534,44 @@ renderFaqs();
   });
 })();
 
+// === NAVIGATION SMOOTH SCROLL ===
+(() => {
+  const header = document.querySelector('.navbar');
+
+  const getOffset = () => {
+    if (!header) return 0;
+    const styles = window.getComputedStyle(header);
+    const marginBottom = parseFloat(styles.marginBottom) || 0;
+    return header.getBoundingClientRect().height + marginBottom;
+  };
+
+  const handleNavClick = (event) => {
+    const targetId = event.currentTarget.getAttribute('href');
+    if (!targetId || !targetId.startsWith('#')) return;
+
+    const section = document.querySelector(targetId);
+    if (!section) return;
+
+    event.preventDefault();
+
+    const offset = getOffset();
+    const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+    const destination = Math.max(Math.round(sectionTop - offset), 0);
+
+    window.scrollTo({
+      top: destination,
+      behavior: 'smooth',
+    });
+  };
+
+  const links = Array.from(document.querySelectorAll('a[href^="#"]'))
+    .filter((link) => link.getAttribute('href') !== '#');
+
+  links.forEach((link) => {
+    link.addEventListener('click', handleNavClick);
+  });
+})();
+
 // === ON-SCROLL SPLIT REVEAL (skip CTAs) ===
 (() => {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
