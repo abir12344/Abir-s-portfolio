@@ -349,6 +349,13 @@ const renderTestimonials = () => {
   }
 
   const originalWidth = track.scrollWidth;
+  const isMobileLayout = window.matchMedia('(max-width: 600px)').matches;
+
+  if (isMobileLayout) {
+    testimonialsResizeHandler = () => renderTestimonials();
+    window.addEventListener('resize', testimonialsResizeHandler, { passive: true });
+    return;
+  }
 
   if (cards.length > 1 && originalWidth > 0) {
     const fragment = document.createDocumentFragment();

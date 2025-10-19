@@ -534,6 +534,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   gap: 8px;
   background: #EC7100;
   color: #fff;
+  text-decoration: none;
   cursor: pointer;
   margin: 40px auto 0;
   transition: background 0.3s ease;
@@ -549,6 +550,11 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 
 .btn-box:hover {
   background: #EC7100;
+}
+
+.btn-box:visited {
+  color: #fff;
+  text-decoration: none;
 }
 
 .btn-icon {
@@ -991,6 +997,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
     margin-bottom: -48px;
     border-radius: 0 0 24px 0;
   }
+
 }
 
 /* ===== EXPERTISE SECTION ===== */
@@ -1020,7 +1027,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 106px; /* bar height */
+  height: 50px;
   overflow: visible;
   border-bottom: 2px solid #000;
 }
@@ -1030,7 +1037,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   content: "";
   position: absolute;
   width: 1260px;
-  height: 106px;
+  height: 50px;
   background: #EC7100;
   left: 50%;
   top: 50%;
@@ -1049,10 +1056,10 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   width: 800px;
   justify-content: center;
   font-family: "Sofia Sans Condensed", sans-serif;
-  font-size: 104px;
+  font-size: 42px;
   font-weight: 900;
-  line-height: 90%; /* 93.6px */
-  letter-spacing: -2.4px;
+  line-height: 1.1;
+  letter-spacing: -1px;
   text-transform: uppercase;
   text-align: center;
   color: #231E1C;
@@ -1103,6 +1110,41 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   color: #231E1C;
   text-align: center;
   line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .expertise {
+    width: auto;
+    padding: 56px 16px;
+    margin: 16px;
+  }
+
+  .expertise-inner {
+    width: 100%;
+    gap: 32px;
+  }
+
+  .expertise-row {
+    width: 100%;
+    height: 50px;
+    padding: 0;
+  }
+
+  .expertise-row::before {
+    width: 100%;
+    height: 100%;
+  }
+
+  .row-text {
+    width: 100%;
+    font-size: 42px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .hover-img {
+    display: none;
+  }
 }
 
 .case-section {
@@ -1163,7 +1205,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   align-items: center;
   gap: 40px;
   align-self: stretch;
-  border-radius: 40px;
+  border-radius: 20px;
   background: #EC7100;
 }
 
@@ -1254,7 +1296,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   width: 100%;
   height: auto;
   object-fit: contain;
-  border-radius: 24px;
+  border-radius: 12px;
 }
 
 /* BUTTON */
@@ -1327,6 +1369,156 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 
 .btn-box-casetudy:hover .btn-text-small::before {
   clip-path: inset(0 0 0 0);
+}
+
+@media (max-width: 600px) {
+  .case-section {
+    padding: 56px 0;
+  }
+
+  .case-container {
+    width: 100%;
+    padding: 0 16px;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .case-section-title {
+    font-size: 40px;
+    line-height: 1.05;
+    margin-bottom: 24px;
+  }
+
+  .case-list {
+    width: 100%;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .outer-card {
+    width: 100%;
+    height: auto;
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+.inner-card {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  min-height: 591.385px;
+  padding: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+}
+
+  .text-container {
+    width: 100%;
+    padding: 20px 0 15px 12px;
+    gap: 22px;
+  }
+
+  .label {
+    gap: 12px;
+  }
+
+  .label-num {
+    min-width: 40px;
+    min-height: 28px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .label-text {
+    font-size: 16px;
+  }
+
+  .text-main {
+    gap: 12px;
+  }
+
+  .case-title {
+    font-size: 30px;
+    line-height: 1.1;
+  }
+
+  .supporting-text-case {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .btn-box-casetudy {
+    height: 46px;
+    min-width: 180px;
+    padding: 12px 20px;
+  }
+
+  .btn-box-casetudy .btn-text-small {
+    font-size: 15px;
+    width: auto;
+  }
+
+  .testimonial {
+    padding: 80px 16px;
+    align-items: stretch;
+  }
+
+  .review-container {
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .review-track {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    width: 100%;
+    transform: none !important;
+  }
+
+  .review-card {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+  }
+
+  .stars-text,
+  .main-text-review {
+    width: 100%;
+  }
+
+  .starts {
+    padding-right: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .image-part {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  .image-part img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+  }
 }
 
 .testimonial{
@@ -1451,21 +1643,18 @@ align-self: stretch;
 /* ===== FAQ SECTION BASE ===== */
 .faq {
   display: flex;
-  padding: 120px 0;
+  padding: 120px 16px;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   align-self: stretch;
-  background: #ffffff; /* optional cream background */
+  background: #ffffff;
 }
 
-/* ===== TWO-COLUMN LAYOUT ===== */
 .faq-section-main {
   display: flex;
-  max-width: 1440px;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 104px;
-  align-self: stretch;
+  flex-direction: column;
+  width: min(100%, 760px);
+  gap: 40px;
 }
 
 .cta-section-main {
@@ -1483,7 +1672,7 @@ align-self: stretch;
 /* ===== LEFT SIDE (TITLE + TEXT + BUTTON) ===== */
 .title-faq-main {
   display: flex;
-  width: 580px;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
@@ -1550,7 +1739,7 @@ align-self: stretch;
 /* ===== RIGHT SIDE (FAQ QUESTIONS) ===== */
 .faqbox-questions {
   display: flex;
-  width: 580px;
+  width: 100%;
   border-top: 2px solid #111111;
   flex-direction: column;
   align-items: flex-start;
@@ -1621,12 +1810,13 @@ align-self: stretch;
 
 .cta{
   display: flex;
-padding: 120px 0;
-justify-content: center;
-align-items: center;
-gap: 10px;
-align-self: stretch;
-background: #000;
+  flex-direction: column;
+  padding: 120px 16px;
+  justify-content: center;
+  align-items: stretch;
+  gap: 32px;
+  align-self: stretch;
+  background: #000;
 }
 
 .cta-title{
@@ -1643,18 +1833,20 @@ text-transform: uppercase;
 
 .title-cta-main{
   display: flex;
-  padding: 0 40px;
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 0;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 44px;
-  flex: 1 0 0;
+  align-items: flex-start;
+  gap: 32px;
+  flex: 1 0 auto;
   align-self: stretch;
 }
 
 .supporting-text-cta{
   color: #EAE8E4;
-  text-align: center;
+  text-align: left;
   font-family: "Spline Sans";
   font-size: 20px;
   font-style: normal;
@@ -1662,23 +1854,31 @@ text-transform: uppercase;
   line-height: 150%; /* 30px */
 }
 
+@media (max-width: 500px) {
+  .supporting-text-cta {
+    color: #FFF;
+    text-align: center;
+  }
+}
+
 .title-and-supporting{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
   align-self: stretch;
 }
 
 .cta-video{
   display: flex;
-  width: 571px;
-  padding: 14px;
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 14px 0;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 16px;
   align-self: stretch;
-  background: #c6baaf00;
+  background: transparent;
 }
 
 .video-preview{
@@ -1734,7 +1934,7 @@ text-transform: uppercase;
   justify-content: space-between;
   gap: 10px;
   padding: 60px 0;
-  width: 100%;
+  width: min(100%, 1260px);
   max-width: 1260px;
   margin: 0 auto;
   align-items: stretch;
@@ -1756,10 +1956,20 @@ text-transform: uppercase;
 
 .upper-part-footer{
   display: flex;
+  height: 382px;
+  padding: 32px 16px;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
   align-self: stretch;
+}
+
+@media (max-width: 500px) {
+  .upper-part-footer {
+    height: auto;
+    padding: 16px 16px;
+    gap: 32px;
+  }
 }
 
 .avatar {
@@ -1917,7 +2127,7 @@ text-transform: uppercase;
 .footer-bottom {
   border-top: 1px solid #D9D9D9;
   padding: 20px 0;
-  width: 100%;
+  width: min(100%, 1260px);
   max-width: 1260px;
   margin: 0 auto;
   display: flex;
