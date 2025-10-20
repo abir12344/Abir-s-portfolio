@@ -1,4 +1,144 @@
 /* ===== RESET ===== */
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-ThinItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-SemiLight.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-SemiLightItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stratos';
+  src: url('Stratos-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
 * {
   margin: 0;
   padding: 0;
