@@ -1289,7 +1289,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 .expertise-row:hover .hover-img {
   opacity: 1;
   visibility: visible;
-  clip-path: inset(0 0 0 0 round 100px);
+  clip-path: inset(0 0 0 0 round 10px);
 }
 
 /* Caption (Bottom Paragraph) */
@@ -2303,6 +2303,7 @@ align-self: stretch;
   color: #fff;
   border: none;
   padding: 14px 24px;
+  border-radius: 12px;
   cursor: pointer;
   font-family: "Spline Sans Mono", monospace;
   letter-spacing: 1px;
@@ -2417,6 +2418,7 @@ align-self: stretch;
 .footer-bottom-right {
   display: flex;
   gap: 32px;
+  color: #FFFFFF;
 }
 
 .text-footer{
@@ -2425,7 +2427,7 @@ align-self: stretch;
   justify-content: center;
   align-items: flex-start;
   align-self: stretch;
-  gap: 0;
+  gap: 8px;
 }
 
 .h3{
