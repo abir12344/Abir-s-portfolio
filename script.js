@@ -302,6 +302,9 @@ const renderTestimonials = () => {
   items.forEach((item) => {
     const card = document.createElement('div');
     card.className = 'review-card';
+    if (item.theme) {
+      card.classList.add(`review-card--${item.theme}`);
+    }
 
     const starsText = document.createElement('div');
     starsText.className = 'stars-text';
@@ -614,7 +617,7 @@ renderFaqs();
     el.appendChild(lineContainer);
   };
 
-  const targets = Array.from(document.querySelectorAll('[data-split], h1, h2, h3, h4, p, .case-title, .supporting-text-case, .faq-title, .supporting-text-faq, .grid-title, .grid-content span, .label-text, .case-section-title'))
+  const targets = Array.from(document.querySelectorAll('[data-split], h1, h2, h3, h4, p, .case-title, .supporting-text-case, .faq-title, .supporting-text-faq, .grid-title, .grid-content span, .label-text, .case-section-title, [data-on-scroll]'))
     .filter((el) => !isCta(el) && !isInsideReviewCard(el));
 
   // Avoid re-splitting items already using manual split markup in hero heading

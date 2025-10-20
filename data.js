@@ -46,6 +46,7 @@ window.portfolioData = {
       headline: 'Top eSIM App',
       body: 'This app gives you fast and easy access to the internet worldwide. Their customer support is also excellent. Definitely recommended!',
       rating: 5,
+      theme: 'onyx',
     },
     {
       id: 'maria-fernandez',
@@ -55,6 +56,7 @@ window.portfolioData = {
       headline: 'A Partner For Growth',
       body: 'Abir helped us simplify a complex onboarding journey into a flow that our users now rave about. The collaboration was smooth and deeply insightful.',
       rating: 5,
+      theme: 'sienna',
     },
     {
       id: 'liam-chan',
@@ -64,16 +66,7 @@ window.portfolioData = {
       headline: 'Intuitive End-To-End Experience',
       body: 'We went from scattered ideas to a polished product vision. The strategy, research, and UI execution landed us our next round of funding.',
       rating: 5,
-    },
-
-    {
-      id: 'liam-chan',
-      author: 'Liam Chan',
-      role: 'Founder, PulseTrack',
-      date: '2024-08-21T08:45:00Z',
-      headline: 'Intuitive End-To-End Experience',
-      body: 'We went from scattered ideas to a polished product vision. The strategy, research, and UI execution landed us our next round of funding.',
-      rating: 5,
+      theme: 'violet',
     },
   ],
   faqs: [
