@@ -95,6 +95,9 @@
   src: url('Stratos-SemiBoldItalic.ttf') format('truetype');
   font-weight: 600;
   font-style: italic;
+  ascent-override: 114%;
+  descent-override: 40%;
+  line-gap-override: 0%;
 }
 
 @font-face {
@@ -102,6 +105,9 @@
   src: url('Stratos-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
+  ascent-override: 114%;
+  descent-override: 40%;
+  line-gap-override: 0%;
 }
 
 @font-face {
@@ -109,6 +115,9 @@
   src: url('Stratos-BoldItalic.ttf') format('truetype');
   font-weight: 700;
   font-style: italic;
+  ascent-override: 114%;
+  descent-override: 40%;
+  line-gap-override: 0%;
 }
 
 @font-face {
@@ -116,6 +125,9 @@
   src: url('Stratos-ExtraBold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
+  ascent-override: 114%;
+  descent-override: 40%;
+  line-gap-override: 0%;
 }
 
 @font-face {
@@ -123,6 +135,9 @@
   src: url('Stratos-ExtraBoldItalic.ttf') format('truetype');
   font-weight: 800;
   font-style: italic;
+  ascent-override: 114%;
+  descent-override: 40%;
+  line-gap-override: 0%;
 }
 
 @font-face {
@@ -130,6 +145,9 @@
   src: url('Stratos-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
+  ascent-override: 114%;
+  descent-override: 40%;
+  line-gap-override: 0%;
 }
 
 @font-face {
@@ -137,6 +155,9 @@
   src: url('Stratos-BlackItalic.ttf') format('truetype');
   font-weight: 900;
   font-style: italic;
+  ascent-override: 114%;
+  descent-override: 40%;
+  line-gap-override: 0%;
 }
 
 * {
@@ -159,7 +180,7 @@ h2 {
   font-size: 62px;
   font-style: normal;
   font-weight: 900;
-  line-height: 90%; /* 55.8px */
+  line-height: 1.05;
   letter-spacing: -1.2px;
   text-transform: uppercase;
 }
@@ -244,6 +265,7 @@ h2 {
 .split-line {
   display: block;
   overflow: hidden;
+  padding-right: 0.08em;
 }
 
 .logo-text,
@@ -286,6 +308,16 @@ h2 {
   .split-text {
     animation: none;
     transform: translateY(0);
+    opacity: 1;
+  }
+  .btn-box-casetudy {
+    transition: background-color 0.35s ease;
+    transform: none;
+    opacity: 1;
+  }
+  .label-num {
+    transition: none;
+    transform: none;
     opacity: 1;
   }
 }
@@ -1245,7 +1277,8 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   position: relative;
   z-index: 1;
   display: inline-flex;
-  width: 800px;
+  min-width: 860px;
+  width: auto;
   justify-content: center;
   font-family: "Stratos", sans-serif;
   font-size: 104px;
@@ -1463,6 +1496,15 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   font-weight: 900;
   font-size: 20px;
   color: #fff;
+  transform: translateY(18px);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+.label-num.reveal-active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .text-main{
@@ -1529,9 +1571,17 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   background: #FFF;
   position: relative;
   overflow: hidden;
-  transition: background-color 0.35s ease;
+  transition: background-color 0.35s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease;
   text-decoration: none;
   color: inherit;
+  transform: translateY(24px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.btn-box-casetudy.reveal-active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .btn-box-casetudy:hover {
@@ -1784,7 +1834,6 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   display: inline-flex;
   align-items: flex-start;
   gap: 24px;
-  transition: transform 0.6s ease;
   will-change: transform;
 }
 
@@ -2106,9 +2155,13 @@ background: #785F47;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 44px;
+  gap: 16px;
   flex: 1 0 0;
   align-self: stretch;
+}
+
+.title-cta-main .btn-box{
+  margin: 12px auto 0;
 }
 
 .supporting-text-cta{

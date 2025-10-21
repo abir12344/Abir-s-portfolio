@@ -285,6 +285,9 @@ const renderTestimonials = () => {
   if (testimonialsScrollState?.rafId) {
     cancelAnimationFrame(testimonialsScrollState.rafId);
   }
+  if (typeof testimonialsScrollState?.cleanup === 'function') {
+    testimonialsScrollState.cleanup();
+  }
   testimonialsScrollState = null;
 
   container.innerHTML = '';
@@ -417,8 +420,32 @@ const renderTestimonials = () => {
     state.lastTime = null;
   };
 
-  container.addEventListener('pointerenter', stopScroll);
-  container.addEventListener('pointerleave', startScroll);
+  const handlePointerOver = () => {
+    stopScroll();
+  };
+
+  const handlePointerOut = (event) => {
+    const nextTarget = event.relatedTarget;
+    if (!nextTarget || !container.contains(nextTarget)) {
+      startScroll();
+    }
+  };
+
+  const handleFocusIn = () => {
+    stopScroll();
+  };
+
+  const handleFocusOut = (event) => {
+    const nextTarget = event.relatedTarget;
+    if (!nextTarget || !container.contains(nextTarget)) {
+      startScroll();
+    }
+  };
+
+  container.addEventListener('pointerover', handlePointerOver);
+  container.addEventListener('pointerout', handlePointerOut);
+  container.addEventListener('focusin', handleFocusIn);
+  container.addEventListener('focusout', handleFocusOut);
 
   testimonialsResizeHandler = () => {
     stopScroll();
@@ -426,6 +453,13 @@ const renderTestimonials = () => {
   };
 
   window.addEventListener('resize', testimonialsResizeHandler, { passive: true });
+
+  state.cleanup = () => {
+    container.removeEventListener('pointerover', handlePointerOver);
+    container.removeEventListener('pointerout', handlePointerOut);
+    container.removeEventListener('focusin', handleFocusIn);
+    container.removeEventListener('focusout', handleFocusOut);
+  };
 
   requestAnimationFrame(() => {
     state.track.style.transform = 'translateX(0)';
@@ -588,10 +622,11 @@ renderFaqs();
   if (prefersReduced) return;
 
   const isCta = (el) => {
-    return el.closest('.btn-box, .btn-chat, .btn-box-casetudy, .btn-box-frq, .btn-box-faq, .btn-box-cta');
+    return el.closest('.btn-box, .btn-chat, .btn-box-frq, .btn-box-faq, .btn-box-cta');
   };
 
   const isInsideReviewCard = (el) => el.closest('.review-card');
+  const shouldSkipSplit = (el) => el.matches('.btn-box-casetudy, .label-num');
 
   const splitElement = (el) => {
     if (el.dataset.splitInit) return;
@@ -617,11 +652,12 @@ renderFaqs();
     el.appendChild(lineContainer);
   };
 
-  const targets = Array.from(document.querySelectorAll('[data-split], h1, h2, h3, h4, p, .case-title, .supporting-text-case, .faq-title, .supporting-text-faq, .grid-title, .grid-content span, .label-text, .case-section-title, [data-on-scroll]'))
+  const targets = Array.from(document.querySelectorAll('[data-split], h1, h2, h3, h4, p, .case-title, .supporting-text-case, .faq-title, .supporting-text-faq, .grid-title, .grid-content span, .label-text, .label-num, .case-section-title, .btn-box-casetudy, [data-on-scroll]'))
     .filter((el) => !isCta(el) && !isInsideReviewCard(el));
 
   // Avoid re-splitting items already using manual split markup in hero heading
   targets.forEach((el) => {
+    if (shouldSkipSplit(el)) return;
     if (el.querySelector('.split-line, .split-text')) return;
     splitElement(el);
   });
