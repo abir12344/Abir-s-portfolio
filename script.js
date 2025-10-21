@@ -1,87 +1,4 @@
-// === HERO SECTION ===
-const hero = document.querySelector('.hero');
-const gallery = hero ? hero.querySelector('.hero-images') : null;
-const images = gallery ? Array.from(gallery.querySelectorAll('.hero-image')) : [];
-
-if (hero && gallery && images.length) {
-  let bounds = hero.getBoundingClientRect();
-
-  const layers = images.map((image, index) => {
-    const { depth, scale, rotate, opacity, offsetX, offsetY, ease } = image.dataset;
-    const parse = (value, fallback) =>
-      value !== undefined ? parseFloat(value) : fallback;
-
-    return {
-      depth: parse(depth, -280 - index * 140),
-      scale: parse(scale, 1 - index * 0.08),
-      rotateRange: parse(rotate, 16 - index * 2.5),
-      opacity: parse(opacity, Math.max(0, 1 - index * 0.18)),
-      offsetX: parse(offsetX, 0),
-      offsetY: parse(offsetY, 0),
-      ease: parse(ease, 0.14 + index * 0.05),
-    };
-  });
-
-  const state = layers.map((layer) => ({
-    x: bounds.width / 2 + layer.offsetX,
-    y: bounds.height / 2 + layer.offsetY,
-  }));
-
-  const sizes = images.map((image) => ({
-    width: image.offsetWidth || 200,
-    height: image.offsetHeight || 200,
-  }));
-
-  const mouse = { x: bounds.width / 2, y: bounds.height / 2, active: false };
-
-  const updateMouse = (event) => {
-    mouse.x = event.clientX - bounds.left;
-    mouse.y = event.clientY - bounds.top;
-    mouse.active = true;
-  };
-  const resetMouse = () => (mouse.active = false);
-
-  hero.addEventListener('pointermove', updateMouse);
-  hero.addEventListener('pointerenter', updateMouse);
-  hero.addEventListener('pointerleave', resetMouse);
-
-  window.addEventListener('resize', () => {
-    bounds = hero.getBoundingClientRect();
-  });
-
-  const animate = () => {
-    const targetX = mouse.active ? mouse.x : bounds.width / 2;
-    const targetY = mouse.active ? mouse.y : bounds.height / 2;
-
-    images.forEach((image, index) => {
-      const layer = layers[index];
-      const current = state[index];
-
-      const desiredX = targetX + layer.offsetX;
-      const desiredY = targetY + layer.offsetY;
-
-      current.x += (desiredX - current.x) * layer.ease;
-      current.y += (desiredY - current.y) * layer.ease;
-
-      const relativeX = bounds.width ? (current.x - bounds.width / 2) / bounds.width : 0;
-      const relativeY = bounds.height ? (current.y - bounds.height / 2) / bounds.height : 0;
-
-      const rotateX = relativeY * layer.rotateRange;
-      const rotateY = -relativeX * layer.rotateRange;
-      const { width, height } = sizes[index];
-      const translateX = current.x - width / 2;
-      const translateY = current.y - height / 2;
-      const opacity = mouse.active ? layer.opacity : 0;
-
-      image.style.transform = `translate3d(${translateX}px, ${translateY}px, ${layer.depth}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${layer.scale})`;
-      image.style.opacity = opacity;
-      image.style.zIndex = String(500 - index);
-    });
-
-    requestAnimationFrame(animate);
-  };
-  animate();
-}
+// === HERO SECTION (cursor animation removed) ===
 
 // === TITLE DYNAMIC ===
 const titleDynamic = document.querySelector('.title-dynamic');
@@ -175,7 +92,6 @@ if (titleDynamic && !titleDynamic.dataset.typewriterInit) {
 
 // === CASE STUDIES ===
 const portfolioData = window.portfolioData || {};
-const STAR_PATH = 'M11.8356 0L12.9787 7.62872H21L13.6852 12.3435L14.8284 19.9722L9.1644 15.2574L1.84965 19.9722L5.66394 12.3435L0 7.62872H8.0213L11.8356 0Z';
 const FAQ_CHEVRON_PATH = 'M15.9922 17.5618L21.7161 11.8379L23.6018 13.7235L15.9922 21.333L8.38281 13.7235L10.2684 11.8379L15.9922 17.5618Z';
 
 const createSvg = ({ width, height, viewBox, pathD, fill = '#331F33' }) => {
@@ -248,29 +164,6 @@ const renderCaseStudies = () => {
 let testimonialsScrollState = null;
 let testimonialsResizeHandler = null;
 
-const formatReviewMeta = (review) => {
-  const author = review.author || 'Anonymous';
-  const role = review.role ? ` — ${review.role}` : '';
-
-  if (!review.date) {
-    return `${author}${role}`;
-  }
-
-  const parsed = new Date(review.date);
-  if (Number.isNaN(parsed.getTime())) {
-    return `${author}${role} • ${review.date}`;
-  }
-
-  const datePart = parsed.toLocaleDateString('en-CA');
-  const timePart = parsed.toLocaleTimeString('en-GB', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  });
-
-  return `${author}${role} • ${datePart} ${timePart}`;
-};
-
 const renderTestimonials = () => {
   const container = document.querySelector('[data-testimonials]');
   const items = Array.isArray(portfolioData.testimonials) ? portfolioData.testimonials : [];
@@ -309,29 +202,31 @@ const renderTestimonials = () => {
       card.classList.add(`review-card--${item.theme}`);
     }
 
-    const starsText = document.createElement('div');
-    starsText.className = 'stars-text';
+    const wrapper = document.createElement('div');
+    wrapper.className = 'review-card-content';
 
-    const starsRow = document.createElement('div');
-    starsRow.className = 'starts';
+    const logoFrame = document.createElement('div');
+    logoFrame.className = 'review-logo-frame';
 
-    const rating = typeof item.rating === 'number' ? Math.max(0, Math.min(5, Math.round(item.rating))) : 0;
-    for (let i = 0; i < 5; i += 1) {
-      const star = createSvg({
-        width: 21,
-        height: 20,
-        viewBox: '0 0 21 20',
-        pathD: STAR_PATH,
-        fill: i < rating ? '#F29161' : '#E1D9D2',
-      });
-      starsRow.appendChild(star);
+    const logoInner = document.createElement('div');
+    logoInner.className = 'review-logo-inner';
+    const fallbackLetter = (item.logoText || item.headline || item.author || '?').trim().charAt(0).toUpperCase();
+    if (item.logo) {
+      const logoImg = document.createElement('img');
+      logoImg.src = item.logo;
+      logoImg.alt = item.logoAlt || `${fallbackLetter} logo`;
+      logoImg.width = 34;
+      logoImg.height = 34;
+      logoImg.loading = 'lazy';
+      logoImg.decoding = 'async';
+      logoInner.appendChild(logoImg);
+    } else {
+      logoInner.textContent = fallbackLetter;
     }
+    logoFrame.appendChild(logoInner);
 
-    const meta = document.createElement('p');
-    meta.className = 'testimonial-supporting-text';
-    meta.textContent = formatReviewMeta(item);
-
-    starsText.append(starsRow, meta);
+    const mainColumn = document.createElement('div');
+    mainColumn.className = 'review-main';
 
     const mainText = document.createElement('div');
     mainText.className = 'main-text-review';
@@ -345,7 +240,15 @@ const renderTestimonials = () => {
     body.textContent = item.body || '';
 
     mainText.append(headline, body);
-    card.append(starsText, mainText);
+
+    const title = document.createElement('p');
+    title.className = 'review-title';
+    title.textContent = item.role || '';
+
+    mainColumn.append(mainText, title);
+
+    wrapper.append(logoFrame, mainColumn);
+    card.appendChild(wrapper);
     track.appendChild(card);
     cards.push(card);
   });
