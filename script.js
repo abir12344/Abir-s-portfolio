@@ -675,6 +675,58 @@ renderFaqs();
   targets.forEach((el) => io.observe(el));
 })();
 
+// === SECTION THEME BACKGROUNDS ===
+(() => {
+  const body = document.body;
+  const cta = document.querySelector('.cta');
+  const footer = document.querySelector('.footer');
+  if (!body || (!cta && !footer)) return;
+
+  const MANAGED_CLASSES = ['theme-cta', 'theme-footer'];
+  const CTA_THRESHOLD = 0.35;
+  const FOOTER_THRESHOLD = 0.35;
+
+  const visibleRatio = (element) => {
+    if (!element) return 0;
+    const rect = element.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+    if (visibleHeight <= 0) return 0;
+    const divisor = Math.min(rect.height || viewportHeight, viewportHeight);
+    return divisor > 0 ? visibleHeight / divisor : 0;
+  };
+
+  const applyTheme = () => {
+    body.classList.remove(...MANAGED_CLASSES);
+
+    const footerRatio = visibleRatio(footer);
+    const ctaRatio = visibleRatio(cta);
+
+    if (footerRatio > FOOTER_THRESHOLD) {
+      body.classList.add('theme-footer');
+      return;
+    }
+
+    if (ctaRatio > CTA_THRESHOLD) {
+      body.classList.add('theme-cta');
+    }
+  };
+
+  let rafId = null;
+  const scheduleUpdate = () => {
+    if (rafId !== null) return;
+    rafId = requestAnimationFrame(() => {
+      rafId = null;
+      applyTheme();
+    });
+  };
+
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate, { passive: true });
+  window.addEventListener('orientationchange', scheduleUpdate);
+  scheduleUpdate();
+})();
+
 // === NAV LETTER HOVER ===
 (() => {
   const wrappers = document.querySelectorAll('.menu-link-text');

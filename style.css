@@ -168,18 +168,28 @@
 
 /* ===== BASE ===== */
 body {
-  background: #FBF9EF;
+  --page-background: #FBF9EF;
+  background-color: var(--page-background);
   color: #231E1C;
   font-family: "Spline Sans", sans-serif;
+  transition: background-color 0.6s ease;
+}
+
+body.theme-cta {
+  --page-background: #785F47;
+}
+
+body.theme-footer {
+  --page-background: #111111;
 }
 
 h2 {
-  color: #231E1C;
+  color: #000000;
   text-align: center;
   font-family: "Stratos", sans-serif;
   font-size: 62px;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -1.2px;
   text-transform: uppercase;
@@ -210,6 +220,13 @@ h2 {
   [data-reveal-on-load] {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+  body {
+    transition: none;
+  }
+  .cta,
+  .footer {
     transition: none;
   }
 }
@@ -991,7 +1008,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 .about-intro p {
   font-family: "Spline Sans", sans-serif;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 700;
   color: #231E1C;
   line-height: 1.5;
 }
@@ -1002,7 +1019,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   font-family: "Stratos", sans-serif;
   font-size: 16px;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 19.2px; /* 120% */
   text-transform: uppercase;
 }
@@ -1040,7 +1057,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 .specialization-title .title-line,
 .specialization-title .title-dynamic {
   font-family: "Stratos", sans-serif;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 60px;
   line-height: 1.1;
   letter-spacing: -1.2px;
@@ -1049,7 +1066,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 }
 
 .specialization-title .title-line {
-  color: #231202;
+  color: #111111;
 }
 
 .specialization-title .title-dynamic {
@@ -1109,7 +1126,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 .about-extra p {
   font-family: "Spline Sans", sans-serif;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.6;
   color: #231E1C;
   max-width: 1060px;
@@ -1425,7 +1442,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   font-family: "Stratos", sans-serif;
   font-size: 65px;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 58.5px; /* 90% */
   letter-spacing: -2.4px;
   text-transform: uppercase;
@@ -1528,7 +1545,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   font-family: "Stratos", sans-serif;
   font-size: 42px;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 45.6px;
   letter-spacing: -0.48px;
   text-transform: uppercase;
@@ -1657,6 +1674,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
     letter-spacing: -1.4px;
     margin-top: 20px;
     margin-bottom: 0px;
+    font-weight: 700;
   }
 
   .case-list {
@@ -1786,6 +1804,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
     line-height: 90%;
     letter-spacing: -1.4px;
     text-align: left;
+    font-weight: 700;
   }
 
   .cta-title {
@@ -1794,6 +1813,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
     font-size: 42px;
     line-height: 90%;
     letter-spacing: -2.4px;
+    font-weight: 700;
   }
 
   .image-part {
@@ -2000,7 +2020,7 @@ background: #FFF;
   font-family: "Stratos", sans-serif;
   font-size: 62px;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 90%; /* 58.5px */
   letter-spacing: -1.4px;
   text-transform: uppercase;
@@ -2134,7 +2154,16 @@ align-items: center;
 
 align-self: stretch;
 background: #785F47;
+transition: background-color 0.6s ease;
+}
 
+body.theme-footer .cta {
+  background: #111111;
+}
+
+body.theme-cta .cta,
+body:not(.theme-footer):not(.theme-cta) .cta {
+  background: #785F47;
 }
 
 .cta-title{
@@ -2143,7 +2172,7 @@ background: #785F47;
   font-family: Stratos;
   font-size: 62px;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 90%; /* 55.8px */
   letter-spacing: -1.4px;
   text-transform: uppercase;
@@ -2248,6 +2277,16 @@ justify-content: center;
 align-items: center;
 align-self: stretch;
 background: #785F47;
+transition: background-color 0.6s ease;
+}
+
+body.theme-footer .footer {
+  background: #111111;
+}
+
+body.theme-cta .footer,
+body:not(.theme-footer):not(.theme-cta) .footer {
+  background: #785F47;
 }
 
 .footer-container-main {
@@ -2310,11 +2349,11 @@ align-self: stretch;
 }
 
 .footer-left h3 {
-  ccolor: #111;
+  color: #111;
   font-family: Stratos;
   font-size: 42px;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 45.6px; /* 108.571% */
   text-transform: uppercase;
 }
