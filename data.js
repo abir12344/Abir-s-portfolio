@@ -9,7 +9,7 @@ window.portfolioData = {
       image: 'Banner.png',
       imageAlt: 'Preview of the Medicare app redesign case study',
       buttonText: 'VIEW CASE STUDY',
-      buttonHref: '#',
+      buttonHref: '',
       theme: 'default',
     },
     {
@@ -21,7 +21,7 @@ window.portfolioData = {
       image: 'banner 2nd.png',
       imageAlt: 'Preview of the Telehealth platform case study',
       buttonText: 'VIEW CASE STUDY',
-      buttonHref: '#',
+      buttonHref: 'https://www.behance.net/gallery/190757093/Medicare-mobile-app-UIUX-case-study',
       theme: 'indigo',
     },
     {
@@ -101,4 +101,8 @@ window.portfolioData = {
       open: false,
     },
   ],
+  cta: {
+    buttonText: 'SCHEDULE A CALL',
+    buttonHref: 'https://calendly.com/uixabir',
+  },
 };

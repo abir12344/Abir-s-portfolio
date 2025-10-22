@@ -138,9 +138,25 @@ const renderCaseStudies = () => {
     if (item.description) supporting.innerHTML = item.description;
     textMain.append(title, supporting);
 
-    const button = document.createElement('a');
+    const rawHref = typeof item.buttonHref === 'string' ? item.buttonHref.trim() : '';
+    const buttonLink = rawHref && rawHref !== '#' ? rawHref : '';
+    const button = buttonLink ? document.createElement('a') : document.createElement('span');
     button.className = 'btn-box-casetudy';
-    button.href = item.buttonHref || '#';
+
+    if (buttonLink) {
+      button.href = buttonLink;
+      const target = (item.buttonTarget || '_blank').trim();
+      if (target) {
+        button.setAttribute('target', target);
+        if (target === '_blank') {
+          button.setAttribute('rel', 'noopener');
+        }
+      }
+    } else {
+      button.setAttribute('aria-disabled', 'true');
+      button.classList.add('is-disabled');
+      button.dataset.disabled = 'true';
+    }
     const buttonText = document.createElement('span');
     buttonText.className = 'btn-text-small';
     buttonText.textContent = item.buttonText || 'VIEW CASE STUDY';
@@ -402,10 +418,34 @@ const renderFaqs = () => {
   });
 };
 
+const hydrateCtaButton = () => {
+  const ctaButton = document.querySelector('[data-cta-button]');
+  if (!ctaButton) return;
+
+  const buttonData = portfolioData.cta || {};
+  const { buttonText, buttonHref } = buttonData;
+
+  if (typeof buttonHref === 'string' && buttonHref.trim()) {
+    ctaButton.setAttribute('href', buttonHref.trim());
+    ctaButton.setAttribute('target', '_blank');
+    ctaButton.setAttribute('rel', 'noopener');
+  }
+
+  if (typeof buttonText === 'string' && buttonText.trim()) {
+    const textNode = ctaButton.querySelector('[data-cta-button-text]');
+    if (textNode) {
+      textNode.textContent = buttonText.trim();
+    } else {
+      ctaButton.textContent = buttonText.trim();
+    }
+  }
+};
+
 // === INIT ===
 renderCaseStudies();
 renderTestimonials();
 renderFaqs();
+hydrateCtaButton();
 
 // === INITIAL LOAD REVEALS ===
 (() => {
