@@ -259,10 +259,10 @@ h2 {
 @media (max-width: 500px) {
   .navbar {
     display: flex;
+    width: 90vh;
     height: 60px;
     padding: 16px 20px;
-    margin-left: 16px;
-    margin-right: 16px;
+    margin: 16px 16px 0 16px;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
@@ -285,10 +285,10 @@ h2 {
   .logo {
     color: #FFF;
     font-family: Stratos;
-    font-size: 14px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 800;
-    line-height: 100%; /* 14px */
+    line-height: 96%; /* 14px */
     letter-spacing: -0.25px;
     text-transform: uppercase;
   }
@@ -526,6 +526,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   width: 100vw;
   background: #FBF9EF;
   display: flex;
+  margin: 16px;
   justify-content: center;
   text-align: center;
   padding: 90px 20px 120px;
@@ -538,7 +539,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
     display: flex;
     justify-content: center;
     text-align: center;
-    padding: 130px 16px;
+    padding: 130px 0;
   }
 }
 
@@ -554,12 +555,12 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 @media (max-width: 500px) {
   .hero .container {
     display: flex;
-    height: 651px;
-    max-width: 343px;
+    height: 70vh;
+    margin: 0 16px;
     flex-direction: column;
-    padding: 90px 0 128px 0;
-    justify-content: center;
     align-items: flex-start;
+    padding: 0;
+    justify-content: center;
     flex-shrink: 0;
     align-self: stretch;
   }
@@ -1747,7 +1748,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 
 @media (max-width: 600px) {
   .case-section {
-    padding: 56px 0;
+    padding: 56px 16px;
   }
 
   .case-container {
@@ -2246,6 +2247,22 @@ background: #FFF;
   color: #5A5855;
 }
 
+/* Mobile styles for FAQ */
+@media (max-width: 600px) {
+  .faq {
+    padding: 56px 16px;
+  }
+  
+  .faq-section-main {
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .faqbox-questions {
+    width: 100%;
+  }
+}
+
 /* Final CTA */
 
 .cta{
@@ -2370,7 +2387,27 @@ align-self: stretch;
   background: #F72;
 }
 
-
+/* Mobile styles for CTA */
+@media (max-width: 600px) {
+  .cta {
+    padding: 56px 16px;
+  }
+  
+  .cta-section-main {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    height: auto;
+  }
+  
+  .cta-video {
+    width: 100%;
+  }
+  
+  .video-preview {
+    width: 100%;
+  }
+}
 
 /* Footer */
 .footer {
