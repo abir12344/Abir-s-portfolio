@@ -581,9 +581,11 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
     background: #FBF9EF;
     display: flex;
     justify-content: center;
+    align-items: start;
+    height: 80vh;
    
     text-align: center;
-    padding: 130px 0;
+    padding: 100px 0;
   }
 }
 
@@ -2668,6 +2670,17 @@ body:not(.theme-footer):not(.theme-cta) .footer {
   gap: 64px;
 }
 
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 60px 0;
+  width: min(100%, 1260px);
+  max-width: 1260px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
 @media (max-width: 500px) {
   .footer-container-main {
     display: flex;
@@ -2678,16 +2691,6 @@ body:not(.theme-footer):not(.theme-cta) .footer {
     margin: 0px;
   }
  
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 60px 0;
-  width: min(100%, 1260px);
-  max-width: 1260px;
-  margin: 0 auto;
-  align-items: stretch;
 }
 
 /* LEFT SIDE */
@@ -3068,13 +3071,13 @@ body:not(.theme-footer):not(.theme-cta) .footer {
 
 @media (max-width: 500px) {
   .hero-actions {
-    width: auto;
+    width: 96%;
     gap: 12px;
   }
 
   .hero-actions .btn-box,
   .hero-actions .btn-chat {
-    width: auto;
+    width: 100%;
   }
 }
   
