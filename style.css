@@ -242,6 +242,41 @@ h2 {
   border: 0;
 }
 
+/* ===== GLOBAL MOBILE CONTAINER ===== */
+/* For devices under 500px, apply consistent 16px margins to all main sections */
+@media (max-width: 500px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Apply 16px margins to all main sections */
+  .navbar,
+  .hero,
+  .about-section,
+  .case-section,
+  .testimonial,
+  .expertise,
+  .faq,
+  .cta,
+  .footer {
+    margin: 0 16px;
+  }
+  
+  /* Ensure content fills containers */
+  .navbar,
+  .hero .container,
+  .about-wrapper,
+  .case-container,
+  .review-container,
+  .expertise-list,
+  .faq-section-main,
+  .cta-section-main,
+  .footer-container-main {
+    width: 100%;
+    max-width: none;
+  }
+}
+
 /* ===== HEADER ===== */
 .navbar {
   display: flex;
@@ -259,10 +294,9 @@ h2 {
 @media (max-width: 500px) {
   .navbar {
     display: flex;
-    width: 90vh;
     height: 60px;
     padding: 16px 20px;
-    margin: 16px 16px 0 16px;
+    margin-top: 12px;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
@@ -556,7 +590,6 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   .hero .container {
     display: flex;
     height: 70vh;
-    margin: 0 16px;
     flex-direction: column;
     align-items: flex-start;
     padding: 0;
@@ -654,6 +687,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   .hero p {
     color: #302A27;
     text-align: center;
+    width: auto;
     font-family: "Spline Sans";
     font-size: 20px;
     font-style: normal;
@@ -1279,9 +1313,9 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .about-section {
-    padding: 56px 16px;
+    padding: 56px 0;
   }
 
   .about-card {
@@ -1446,7 +1480,6 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   .expertise {
     width: auto;
     padding: 56px 16px;
-    margin: 16px;
   }
 
   .expertise-list {
@@ -1746,9 +1779,9 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   clip-path: inset(0 0 0 0);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .case-section {
-    padding: 56px 16px;
+    padding: 56px 0;
   }
 
   .case-container {
@@ -1844,7 +1877,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   }
 
   .testimonial {
-    padding: 80px 16px;
+    padding: 80px 0;
     align-items: stretch;
   }
 
@@ -2248,9 +2281,9 @@ background: #FFF;
 }
 
 /* Mobile styles for FAQ */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .faq {
-    padding: 56px 16px;
+    padding: 56px 0;
   }
   
   .faq-section-main {
@@ -2388,9 +2421,9 @@ align-self: stretch;
 }
 
 /* Mobile styles for CTA */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .cta {
-    padding: 56px 16px;
+    padding: 56px 0;
   }
   
   .cta-section-main {
