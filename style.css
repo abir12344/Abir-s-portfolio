@@ -582,7 +582,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
     display: flex;
     justify-content: center;
     align-items: start;
-    height: 80vh;
+    height: 100vh;
    
     text-align: center;
     padding: 100px 0;
@@ -1069,7 +1069,8 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   }
 
   .navbar {
-    height: 90px;
+    height: 60px;
+    border-radius: 14px;
     padding: 0 24px;
   }
 
@@ -1328,7 +1329,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 
 @media (max-width: 500px) {
   .about-section {
-    padding: 56px 16px;
+    padding: 64px 16px;
     border-radius: 1px;
     
   }
