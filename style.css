@@ -266,6 +266,7 @@ h2 {
   .footer {
     padding-left: 16px;
     padding-right: 16px;
+    overflow: hidden;
   }
 
   /* Ensure content fills containers */
@@ -278,6 +279,7 @@ h2 {
   .footer-container-main {
     width: 100%;
     max-width: none;
+    overflow: hidden;
   }
 
 }
@@ -2276,35 +2278,6 @@ background: #FFF;
   text-align: left;
 }
 
-@media (max-width: 500px) {
-
-  .faq-title {
-    color: #231E1C;
-    font-family: "Stratos", sans-serif;
-    font-size: 42px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 90%; /* 58.5px */
-    letter-spacing: -1.4px;
-    text-transform: uppercase;
-    text-align: left;
-  }
-  
-  .supporting-text-faq {
-    color: #231E1C;
-    font-family: "Spline Sans";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; /* 30px */
-  }
-  .btn-box-faq {
-    display: flex;
-    height: none;
-  
-  }
-  
-}
 
 .supporting-text-faq {
   color: #231E1C;
@@ -2341,6 +2314,37 @@ background: #FFF;
   width: 24px;
   height: 25px;
   fill: #FFF;
+}
+
+@media (max-width: 500px) {
+
+  .faq-title {
+    color: #231E1C;
+    font-family: "Stratos", sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%; /* 58.5px */
+    letter-spacing: -1.4px;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  
+  .supporting-text-faq {
+    color: #231E1C;
+    font-family: "Spline Sans";
+    width: auto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+  }
+  .btn-box-faq {
+    display: flex;
+    height: none;
+  
+  }
+  
 }
 
 /* ===== RIGHT SIDE (FAQ QUESTIONS) ===== */
