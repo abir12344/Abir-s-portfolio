@@ -605,7 +605,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    padding: 0 0 56px;
+    padding: 0 0 80px;
     flex: 1 1 auto;
     flex-shrink: 0;
     align-self: stretch;
@@ -639,7 +639,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
     color: #231E1C;
     text-align: center;
     font-family: Stratos;
-    font-size: clamp(36px, 10.2vw, 44px);
+    font-size: 46px;
     font-style: normal;
     font-weight: 900;
     line-height: 104%; /* 38.48px */
@@ -734,7 +734,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
     text-align: center;
     width: auto;
     font-family: "Spline Sans";
-    font-size: 17px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: 30px; /* 150% */
@@ -2389,7 +2389,7 @@ background: #FFF;
   .faq-title {
     color: #231E1C;
     font-family: "Stratos", sans-serif;
-    font-size: 40px;
+    font-size: 34px;
     font-style: normal;
     font-weight: 700;
     line-height: 90%; /* 58.5px */
