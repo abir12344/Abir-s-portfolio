@@ -622,7 +622,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 .hero h1 {
   width: 1074px;
   color: #231E1C;
-  text-align: center;
+  text-align: left;
   font-family: Stratos;
   font-size: 104px;
   font-style: normal;
@@ -2055,6 +2055,8 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   margin: 0;
   padding: 0 16px;
   overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
 }
 
 @media (min-width: 501px) {
@@ -2067,9 +2069,11 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
 
 .review-track{
   display: inline-flex;
-  align-items: flex-start;
+  align-items: stretch;
+  justify-content: flex-start;
   gap: 24px;
   will-change: transform;
+  flex: 0 0 auto;
 }
 
 
@@ -2140,6 +2144,7 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   .review-track{
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     width: 100%;
     gap: 16px;
     padding: 0;
@@ -2170,36 +2175,29 @@ body.menu-open .nav-toggle-bar:nth-child(3) {
   }
 }
 
-.review-logo-frame{
-  display: flex;
-  width: 56px;
-  height: 56px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.222);
-  background: rgba(255, 255, 255, 0.116);
-}
-
 .review-logo-inner{
-  width: 34px;
-  height: 34px;
-  background: rgba(255, 255, 255, 0);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 35px;
+  min-width: 35px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  flex-shrink: 0;
   color: #FFFFFF;
   font-family: "Stratos", sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
   overflow: visible;
+  line-height: 1;
 }
 
 .review-logo-inner img{
-  width: 34px;
-  height: 34px;
-  object-fit: cover;
+  height: 35px;
+  width: auto;
+  object-fit: contain;
 }
 
 .review-main{

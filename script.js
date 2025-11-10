@@ -221,9 +221,6 @@ const renderTestimonials = () => {
     const wrapper = document.createElement('div');
     wrapper.className = 'review-card-content';
 
-    const logoFrame = document.createElement('div');
-    logoFrame.className = 'review-logo-frame';
-
     const logoInner = document.createElement('div');
     logoInner.className = 'review-logo-inner';
     const fallbackLetter = (item.logoText || item.headline || item.author || '?').trim().charAt(0).toUpperCase();
@@ -231,15 +228,14 @@ const renderTestimonials = () => {
       const logoImg = document.createElement('img');
       logoImg.src = item.logo;
       logoImg.alt = item.logoAlt || `${fallbackLetter} logo`;
-      logoImg.width = 34;
-      logoImg.height = 34;
+      logoImg.width = 35;
+      logoImg.height = 35;
       logoImg.loading = 'lazy';
       logoImg.decoding = 'async';
       logoInner.appendChild(logoImg);
     } else {
       logoInner.textContent = fallbackLetter;
     }
-    logoFrame.appendChild(logoInner);
 
     const mainColumn = document.createElement('div');
     mainColumn.className = 'review-main';
@@ -263,7 +259,7 @@ const renderTestimonials = () => {
 
     mainColumn.append(mainText, title);
 
-    wrapper.append(logoFrame, mainColumn);
+    wrapper.append(logoInner, mainColumn);
     card.appendChild(wrapper);
     track.appendChild(card);
     cards.push(card);

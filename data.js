@@ -43,7 +43,7 @@ window.portfolioData = {
       author: 'Stijn Kra',
       role: 'CEO, Framify',
       date: '2025-05-15T09:31:00Z',
-      logo: 'Framify.png',
+      logo: 'Framify.svg',
       logoAlt: 'Framify logo',
       headline: 'Abir is a great designer',
       body: 'Talented, reliable, and creative—Abir makes every project look amazing!',
@@ -65,7 +65,7 @@ window.portfolioData = {
     {
       id: 'liam-chan',
       author: 'Liam Chan',
-      role: 'Founder, PulseTrack',
+      role: 'Founder, DBFEX',
       date: '2024-08-21T08:45:00Z',
       logo: 'logo.svg',
       logoAlt: 'PulseTrack logo',
