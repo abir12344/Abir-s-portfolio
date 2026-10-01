@@ -1,140 +1,99 @@
+/*
+ * Portfolio content.
+ * Edit text here; script.js renders the Selected work, Experience,
+ * Capabilities and Currently exploring sections from it.
+ *
+ * Anything in [square brackets] is a placeholder waiting for real details.
+ */
 window.portfolioData = {
-  caseStudies: [
-    {
-      id: 'medicare-app-redesign',
-      number: '01',
-      label: 'Case Study',
-      company: 'Medicare',
-      category: 'Healthcare',
-      context: 'Mobile app',
-      title: 'Redesigning a medical app around AI and clinical standards',
-      highlight: 'Telehealth flows rebuilt from research to interface',
-      description: 'An end-to-end UX case study: auditing the existing app, mapping patient journeys, and blending AI assistance with established healthcare patterns.',
-      tags: ['UX research', 'Product design', 'AI'],
-      image: 'Banner.webp',
-      imageAlt: 'Preview of the Medicare app redesign case study',
-      buttonText: 'Read case study',
-      buttonHref: 'https://medium.com/design-bootcamp/the-ux-of-medical-app-how-i-mixup-ai-with-industry-standards-1b7e787c3b9b',
-      theme: 'default',
-    },
-    {
-      id: 'dbfex-product-audit-and-redesign',
-      number: '02',
-      label: 'Product',
-      company: 'DBFEX',
-      category: 'Fintech SaaS',
-      context: 'Web platform',
-      title: 'Auditing and redesigning a barrel-trading dashboard',
-      highlight: 'Dense listings and trading workflows made scannable',
-      description: 'A product audit of a live trading platform, followed by a redesign of its dashboard, listings and core flows for faster, more confident decisions.',
-      tags: ['UX audit', 'Dashboard design', 'Design system'],
-      image: 'cade study 2.webp',
-      imageAlt: 'Preview of the DBFEX dashboard audit and redesign',
-      buttonText: 'Visit website',
-      buttonHref: 'https://dbfex.com/',
-      theme: 'indigo',
-    },
-    {
-      id: 'travel-website',
-      number: '03',
-      label: 'UI Design',
-      company: 'Travel',
-      category: 'Consumer web',
-      context: 'Responsive site',
-      title: 'Designing a responsive travel booking website',
-      highlight: 'Search, discovery and booking across every breakpoint',
-      description: 'A responsive travel experience covering destination discovery, budget-led trip planning and a booking flow designed mobile-first.',
-      tags: ['Interface design', 'Responsive', 'Interaction design'],
-      image: 'case study 3.webp',
-      imageAlt: 'Preview of the travel website UI/UX design',
-      buttonText: 'View presentation',
-      buttonHref: 'https://dribbble.com/shots/26499183-Travel-website-UI-UX-design-Responsive',
-      theme: 'carbon',
-    },
-  ],
-  testimonials: [
-    {
-      id: 'stijn-kra',
-      author: 'Stijn Kra',
-      role: 'CEO, Framify',
-      date: '2025-05-15T09:31:00Z',
-      logo: 'Framify.svg',
-      logoAlt: 'Framify logo',
-      headline: 'Abir is a great designer',
-      body: 'Talented, reliable, and creative—Abir makes every project look amazing!',
-      rating: 5,
-      theme: 'onyx',
-    },
-    {
-      id: 'maria-fernandez',
-      author: 'María Fernández',
-      role: 'Founder, Hilfal Digital',
-      date: '2024-11-02T14:10:00Z',
-      logo: 'Hilfal digital.svg',
-      logoAlt: 'Hilfal Digital logo',
-      headline: 'A partner for growth',
-      body: 'Abir helped us simplify a complex onboarding journey into a flow that our users now rave about. The collaboration was smooth and deeply insightful.',
-      rating: 5,
-      theme: 'sienna',
-    },
-    {
-      id: 'liam-chan',
-      author: 'Liam Chan',
-      role: 'Founder, DBFEX',
-      date: '2024-08-21T08:45:00Z',
-      logo: 'logo.svg',
-      logoAlt: 'DBFEX logo',
-      headline: 'Intuitive end-to-end experience',
-      body: 'We went from scattered ideas to a polished product vision. The strategy, research, and UI execution landed us our next round of funding.',
-      rating: 5,
-      theme: 'violet',
-    },
-  ],
-  capabilities: [
-    'Product Design',
-    'UX Strategy',
-    'UX Research',
-    'Interaction Design',
-    'Interface Design',
-    'Design Systems',
-    'Information Architecture',
-    'Prototyping',
-    'Product Thinking',
-    'AI Product Design',
-  ],
-  faqs: [
-    {
-      id: 'design-process',
-      question: 'What does your design process look like?',
-      answer: 'Research, structure, then interface. I start by understanding users, constraints and business goals, map flows and information architecture, then move into wireframes, high-fidelity UI, prototyping and usability testing — tailored to where your product is.',
-      open: true,
-    },
-    {
-      id: 'products',
-      question: 'What kinds of products do you work on?',
-      answer: 'Mostly SaaS and digital products with real complexity: dashboards, multi-step workflows, AI-assisted features and data-heavy interfaces — across healthcare, fintech and travel.',
-      open: false,
-    },
-    {
-      id: 'startups',
-      question: 'Do you work with startups?',
-      answer: 'Absolutely. I help early-stage teams move from concept to MVP with strong UX foundations and fast, iterative delivery.',
-      open: false,
-    },
-    {
-      id: 'redesigns',
-      question: 'Can you redesign an existing product?',
-      answer: 'Yes. I run UX audits to identify usability issues, then redesign the critical flows to lift engagement, retention and conversion — without breaking what already works.',
-      open: false,
-    },
-  ],
   contact: {
     email: 'abir.hossain.14558@gmail.com',
-    calendly: 'https://calendly.com/uixabir',
-    whatsapp: 'https://wa.me/8801706579385',
+    linkedin: 'https://linkedin.com/in/uixabir',
   },
-  cta: {
-    buttonText: 'Schedule a call',
-    buttonHref: 'https://calendly.com/uixabir',
-  },
+
+  // Ordered by how well each project shows complex product work.
+  caseStudies: [
+    {
+      id: 'dbfex',
+      name: 'DBFEX',
+      category: 'Complex digital product',
+      platform: 'Web platform',
+      title: 'Auditing and redesigning a barrel-trading platform',
+      description:
+        'A product audit of a live trading platform, followed by a redesign of its dashboard, listings and core flows.',
+      scope: 'Product audit & redesign',
+      image: 'cade study 2.webp',
+      imageAlt:
+        'DBFEX dashboard redesign showing spotlight barrels, filters and a barrel list with prices',
+      linkText: 'Visit DBFEX',
+      href: 'https://dbfex.com/',
+    },
+    {
+      id: 'medicare',
+      name: 'Medicare',
+      category: 'HealthTech · AI',
+      platform: 'Mobile app',
+      title: 'Redesigning a medical app around AI and clinical standards',
+      description:
+        'A concept telemedicine app pairing AI-assisted symptom checks with a simpler booking flow — cut from 6–7 steps to 3.',
+      scope: 'UX/UI case study (concept)',
+      image: 'Banner.webp',
+      imageAlt:
+        'Medicare mobile app case study cover showing a video consultation between a patient and a doctor',
+      linkText: 'Read the case study',
+      href: 'https://medium.com/design-bootcamp/the-ux-of-medical-app-how-i-mixup-ai-with-industry-standards-1b7e787c3b9b',
+    },
+    {
+      id: 'travel',
+      name: 'Travel website',
+      category: 'Consumer web',
+      platform: 'Responsive website',
+      title: 'Designing a responsive travel booking website',
+      description:
+        'Destination discovery, budget-led trip planning and booking, designed to hold up across every breakpoint.',
+      scope: 'UI/UX design',
+      image: 'case study 3.webp',
+      imageAlt:
+        'Travel website screens: a trip-planning hero, destination cards and traveller testimonials',
+      linkText: 'View on Dribbble',
+      href: 'https://dribbble.com/shots/26499183-Travel-website-UI-UX-design-Responsive',
+    },
+  ],
+
+  experience: [
+    {
+      company: 'Helpful Digital',
+      href: 'https://hilfal.com/',
+      role: 'Product Designer',
+      dates: '[Start date] – Present',
+      current: true,
+      description:
+        'Designing SaaS and digital products for client teams — working through flows, information architecture and interface design.',
+    },
+    {
+      company: '[Previous company]',
+      href: '',
+      role: '[Role]',
+      dates: '[Start] – [End]',
+      current: false,
+      description: '[One line on what you did there.]',
+    },
+  ],
+
+  capabilities: [
+    {
+      group: 'Product',
+      items: ['Product Design', 'Product Thinking', 'UX Strategy', 'Information Architecture'],
+    },
+    {
+      group: 'Experience',
+      items: ['UX Research', 'User Flows', 'Interaction Design', 'Usability', 'Prototyping'],
+    },
+    {
+      group: 'Interface',
+      items: ['UI Design', 'Visual Design', 'Design Systems', 'Responsive Design'],
+    },
+  ],
+
+  exploring: ['SaaS', 'AI products', 'HealthTech', 'Complex product workflows'],
 };
