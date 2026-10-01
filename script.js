@@ -27,7 +27,6 @@
       const href = typeof item.buttonHref === 'string' ? item.buttonHref.trim() : '';
       const hasLink = href && href !== '#';
       const row = el(hasLink ? 'a' : 'div', 'work-row');
-      row.setAttribute('data-reveal', '');
       if (hasLink) {
         row.href = href;
         row.target = item.buttonTarget || '_blank';
@@ -38,7 +37,8 @@
       const img = el('img');
       img.src = item.image || '';
       img.alt = item.imageAlt || item.title || 'Case study preview';
-      img.loading = index === 0 ? 'eager' : 'lazy';
+      img.loading = 'eager';
+      if (index === 0) img.fetchPriority = 'high';
       img.decoding = 'async';
       img.width = 571;
       img.height = 552;
