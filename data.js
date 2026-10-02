@@ -69,8 +69,8 @@ window.portfolioData = {
       current: true,
       roles: [
         { title: 'Lead Designer', dates: '2025 – Present', current: true },
-        { title: 'Senior UX/UI Designer', dates: '2023 – 2025' },
-        { title: 'Mid-level UX/UI Designer', dates: '2022 – 2023' },
+        { title: 'Senior UX/UI Designer', dates: '2024 – 2025' },
+        { title: 'Mid-level UX/UI Designer', dates: '2022 – 2024' },
         { title: 'Junior UX/UI Designer', dates: '2021 – 2022' },
         { title: 'Design Intern', dates: '2021' },
       ],
