@@ -202,7 +202,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .btn-dark:hover { background: #34322E; }
 .btn-soft { background: var(--soft); color: var(--ink); }
 .btn-soft:hover { background: var(--soft-2); }
-.btn img { width: 16px; height: 16px; }
+.btn img { width: 16px; height: 16px; flex: none; }
+.btn img[src*="whatsapp"] { width: 18px; height: 18px; }
 
 /* ---------- 01 Header ---------- */
 .nav-wrap {
@@ -703,7 +704,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0 22px;
+  gap: 0 18px;
   font-size: 14.5px;
   font-weight: 500;
   color: var(--muted);
