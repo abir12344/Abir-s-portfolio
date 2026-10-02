@@ -357,9 +357,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 20px 32px;
+  gap: 4px 36px;
 }
-@media (min-width: 640px) { .credits-list { gap: 20px 56px; } }
+@media (min-width: 640px) { .credits-list { gap: 8px 56px; } }
 .credit { display: grid; gap: 6px; }
 .credit-link {
   display: inline-flex;
@@ -372,7 +372,21 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .credit-link:hover,
 .credit-link:focus-visible { opacity: 1; }
 .credit-mark { height: 26px; width: auto; }
-.credit-logo { height: 30px; width: auto; }
+.credit-logo { width: auto; }
+.credit-logo--framify { height: 17px; }
+.credit-logo--worxeasy { height: 19px; }
+.credit-logo--dbfex { height: 26px; }
+/* Current workplace: its note sits under it on phones, and hangs below
+   without taking width on larger screens so logo spacing stays even. */
+.credit--current { flex-basis: 100%; }
+@media (min-width: 640px) {
+  .credits-list { padding-bottom: 24px; }
+  .credit--current { flex-basis: auto; position: relative; }
+  .credit--current .credit-note { position: absolute; top: 100%; left: 0; white-space: nowrap; margin-top: 2px; }
+  .credit-logo--framify { height: 19px; }
+  .credit-logo--worxeasy { height: 22px; }
+  .credit-logo--dbfex { height: 30px; }
+}
 .credit-name {
   font-size: 17px;
   font-weight: 600;

@@ -62,7 +62,7 @@ window.portfolioData = {
 
   experience: [
     {
-      company: 'Helpful Digital',
+      company: 'Hilf al Digital',
       href: 'https://hilfal.com/',
       role: 'Product Designer',
       dates: '[Start date] – Present',
