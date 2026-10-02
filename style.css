@@ -327,6 +327,26 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   gap: 8px;
 }
 .hero-facts { padding: 6px 0; }
+.hero-actions { align-items: center; }
+.hero-work-link {
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--soft-2);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s var(--ease);
+}
+.hero-work-link:hover { text-decoration-color: var(--ink); }
+@media (max-width: 420px) {
+  .hero-work-link { margin-left: 0; flex-basis: 100%; justify-content: center; }
+}
 
 /* Definition list used in the hero card */
 .facts { display: grid; }
