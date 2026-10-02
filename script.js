@@ -119,12 +119,22 @@
         title.textContent = job.company || '';
         if (isPlaceholder(job.company)) title.classList.add('is-placeholder');
       }
-      const role = el('p', 'job-role', job.role || '');
-      if (job.current) {
-        const badge = el('span', 'job-now', 'Current');
-        role.append(badge);
-      }
-      main.append(title, role);
+      main.append(title);
+      const roles = Array.isArray(job.roles) && job.roles.length
+        ? job.roles
+        : [{ title: job.role, dates: '', current: job.current }];
+      const roleList = el('ol', 'job-roles');
+      roles.forEach((r) => {
+        const item = el('li', 'job-role');
+        if (r.current) item.classList.add('is-current');
+        const name = el('span', 'job-role-title', r.title || '');
+        if (r.current) name.append(el('span', 'job-now', 'Current'));
+        item.append(name);
+        if (r.dates) item.append(el('span', 'job-role-dates', r.dates));
+        roleList.append(item);
+      });
+      if (roles.length > 1) roleList.classList.add('is-progression');
+      main.append(roleList);
 
       const desc = el('p', 'job-desc', job.description || '');
       if (isPlaceholder(job.description)) desc.classList.add('is-placeholder');

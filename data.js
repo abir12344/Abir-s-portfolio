@@ -60,23 +60,20 @@ window.portfolioData = {
     },
   ],
 
+  // One company, listed newest role first. Years are approximate — edit as needed.
   experience: [
     {
       company: 'Hilf al Digital',
       href: 'https://hilfal.com/',
-      role: 'Product Designer',
-      dates: '[Start date] – Present',
+      dates: '2021 – Present',
       current: true,
+      roles: [
+        { title: 'Lead Designer', dates: '2023 – Present', current: true },
+        { title: 'Junior UX/UI Designer', dates: '2021 – 2023' },
+        { title: 'Design Intern', dates: '2021' },
+      ],
       description:
-        'Designing SaaS and digital products for client teams — working through flows, information architecture and interface design.',
-    },
-    {
-      company: '[Previous company]',
-      href: '',
-      role: '[Role]',
-      dates: '[Start] – [End]',
-      current: false,
-      description: '[One line on what you did there.]',
+        'Grew from intern to lead designer, designing SaaS and digital products for client teams — working through flows, information architecture and interface design.',
     },
   ],
 
