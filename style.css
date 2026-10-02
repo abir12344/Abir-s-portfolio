@@ -375,11 +375,13 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 .credit-link:hover,
 .credit-link:focus-visible { opacity: 1; }
+span.credit-link:hover { opacity: 0.8; }
 .credit-mark { height: 26px; width: auto; }
 .credit-logo { width: auto; }
 .credit-logo--framify { height: 17px; }
 .credit-logo--worxeasy { height: 19px; }
 .credit-logo--dbfex { height: 26px; }
+.credit-logo--ciclo { height: 21px; }
 /* Current workplace: its note sits under it on phones, and hangs below
    without taking width on larger screens so logo spacing stays even. */
 .credit--current { flex-basis: 100%; }
@@ -390,6 +392,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .credit-logo--framify { height: 19px; }
   .credit-logo--worxeasy { height: 22px; }
   .credit-logo--dbfex { height: 30px; }
+  .credit-logo--ciclo { height: 24px; }
 }
 .credit-name {
   font-size: 17px;
