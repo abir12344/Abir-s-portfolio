@@ -79,7 +79,9 @@
       [['Scope', item.scope], ['Platform', item.platform]].forEach(([label, value]) => {
         if (!value) return;
         const row = el('div');
-        row.append(el('dt', '', label), el('dd', '', value));
+        const dd = el('dd', '', value);
+        if (isPlaceholder(value)) dd.classList.add('is-placeholder');
+        row.append(el('dt', '', label), dd);
         details.append(row);
       });
       if (details.childElementCount) body.append(details);

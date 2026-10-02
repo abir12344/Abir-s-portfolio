@@ -14,6 +14,21 @@ window.portfolioData = {
   // Ordered by how well each project shows complex product work.
   caseStudies: [
     {
+      id: 'framify',
+      name: 'Framify',
+      category: 'SaaS · Design tools',
+      platform: 'Website + Framer plugin',
+      title: 'A Framer component library with 1,600+ components',
+      description:
+        'Framer components, sections and full website templates, delivered through one native Framer plugin and used by 720+ designers.',
+      scope: '[Your role on Framify]',
+      image: 'framify-hero.webp',
+      imageAlt:
+        'Framify website hero: “Save 10x Time with 1600+ Framer Components” with copy-paste and Framer plugin options',
+      linkText: 'Visit Framify',
+      href: 'https://framify.design/',
+    },
+    {
       id: 'dbfex',
       name: 'DBFEX',
       category: 'Complex digital product',
