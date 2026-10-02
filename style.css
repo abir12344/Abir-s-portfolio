@@ -340,6 +340,52 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .fact dt { color: var(--muted); }
 .fact dd { font-weight: 500; text-align: right; }
 
+/* ---------- Working with (credibility strip) ---------- */
+.credits { padding-top: 64px; }
+.credits-inner {
+  display: grid;
+  gap: 16px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.credits-label {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.credits-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px 32px;
+}
+@media (min-width: 640px) { .credits-list { gap: 20px 56px; } }
+.credit { display: grid; gap: 6px; }
+.credit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  opacity: 0.8;
+  transition: opacity 0.2s var(--ease);
+}
+.credit-link:hover,
+.credit-link:focus-visible { opacity: 1; }
+.credit-mark { height: 26px; width: auto; }
+.credit-logo { height: 30px; width: auto; }
+.credit-name {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+.credit-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
 /* ---------- 03 Selected work ---------- */
 .work-list { display: grid; gap: 12px; }
 .work-row {
@@ -684,6 +730,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* Desktop */
 @media (min-width: 900px) {
+  .credits { padding-top: 80px; }
+  .credits-inner { grid-template-columns: var(--aside) minmax(0, 1fr); column-gap: 72px; }
+  .credits-label { padding-top: 12px; }
   .work-row {
     grid-template-columns: minmax(0, 48.5%) minmax(0, 1fr);
     gap: 42px;
