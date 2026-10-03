@@ -21,7 +21,7 @@ window.portfolioData = {
       title: 'A Framer component library with 1,600+ components',
       description:
         'Framer components, sections and full website templates, delivered through one native Framer plugin and used by 720+ designers.',
-      scope: '[Your role on Framify]',
+      scope: '', // add your role on Framify here, e.g. 'Website design'
       image: 'framify-hero.webp',
       imageAlt:
         'Framify website hero: “Save 10x Time with 1600+ Framer Components” with copy-paste and Framer plugin options',
